@@ -16,17 +16,31 @@
         <!-- Date and Time on Top -->
         <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" Text="{Binding CurrentDateTime}"/>
 
-        <!-- Left: DataGrid with Operations -->
-        <DataGrid Grid.Column="0" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Operation No."/>
-                <DataGridTextColumn Header="Name"/>
-                <DataGridTextColumn Header="Price"/>
-                <DataGridTextColumn Header="Quantity"/>
-                <DataGridTextColumn Header="Total"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <UniformGrid>
+            <!-- Left: DataGrid with Operations -->
+            <DataGrid Grid.Column="0" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Operation No."/>
+                    <DataGridTextColumn Header="Name"/>
+                    <DataGridTextColumn Header="Price"/>
+                    <DataGridTextColumn Header="Quantity"/>
+                    <DataGridTextColumn Header="Total"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Grid>
+                <!-- Left-side panel with buttons for shapes -->
+                <StackPanel Width="150" HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="#f0f0f0">
+                    <Button x:Name="CircleButton" Content="Additional" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightBlue" AllowDrop="False" />
+                    <Button x:Name="SquareButton" Content="Table" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightGreen" AllowDrop="False" />
+                    <Button x:Name="TriangleButton" Content="Cassier" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightCoral" AllowDrop="False" />
+                </StackPanel>
 
+                <!-- Main drawing panel -->
+                <Canvas x:Name="DrawingCanvas" Background="LightGray" AllowDrop="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="150,0,0,0">
+                    <!-- Elements will be dropped here -->
+                </Canvas>
+            </Grid>
+        </UniformGrid>
         <!-- Center: Numeric Keypad and Buttons -->
         <StackPanel Grid.Column="1">
             <UniformGrid Rows="4" Columns="3">
@@ -58,7 +72,6 @@
                 <Button Content="Main"/>
                 <Button Content="Desserts"/>
                 <Button Content="Drinks"/>
-
             </UniformGrid>
             <!-- More categories -->
         </StackPanel>
