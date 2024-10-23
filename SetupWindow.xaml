@@ -5,8 +5,76 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:POS_restaurant"
         mc:Ignorable="d"
-        Title="SetupWindow" Height="450" Width="800">
+        Title="SetupWindow" 
+        WindowState="Maximized"
+        WindowStyle="None">
     <Grid>
-        
+        <StackPanel Width="400" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <RichTextBox Name="CoinsAndCash" AcceptsTab="True" VerticalScrollBarVisibility="Visible">
+                <FlowDocument>
+                </FlowDocument>
+            </RichTextBox>
+        </StackPanel>
+        <StackPanel Width="400" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <!-- Preferences Header -->
+            <TextBlock Text="Preferences" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="10"/>
+
+            <!-- Color Scheme -->
+            <TextBlock Text="Color Scheme" FontSize="16" Margin="5"/>
+            <ComboBox x:Name="ColorSchemeComboBox" SelectedIndex="0" FontSize="16" Margin="5" Width="200">
+                <ComboBoxItem Content="Light" />
+                <ComboBoxItem Content="Dark" />
+                <ComboBoxItem Content="Multicolor1" />
+                <ComboBoxItem Content="Multicolor2" />
+            </ComboBox>
+
+            <!-- Language -->
+            <TextBlock Text="Language" FontSize="16" Margin="5"/>
+            <ComboBox x:Name="LanguageComboBox" SelectedIndex="0" FontSize="16" Margin="5" Width="200">
+                <ComboBoxItem Content="Turkish" />
+            </ComboBox>
+
+            <!-- Currency -->
+            <TextBlock Text="Currency" FontSize="16" Margin="5"/>
+            <ComboBox x:Name="CurrencyComboBox" SelectedIndex="0" FontSize="16" Margin="5" Width="200">
+                <ComboBoxItem Content="Turk Lira" />
+            </ComboBox>
+
+            <!-- Date and Time format -->
+            <TextBlock Text="Date and Time Format" FontSize="16" Margin="5"/>
+            <ComboBox x:Name="DateTimeFormatComboBox" SelectedIndex="0" FontSize="16" Margin="5" Width="200" IsEnabled="True">
+                <!-- Just a few example formats for simplicity. Full list can be added dynamically in the C# code -->
+                <ComboBoxItem Content="MM/dd/yyyy HH:mm:ss" />
+                <ComboBoxItem Content="dd/MM/yyyy HH:mm:ss" />
+                <ComboBoxItem Content="yyyy-MM-dd HH:mm:ss" />
+            </ComboBox>
+
+            <!-- Automatic Date & Time Toggle Button -->
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Automatic Date and Time" FontSize="16" VerticalAlignment="Center"/>
+                <ToggleButton x:Name="AutoDateTimeToggleButton" Width="100" Margin="10,0,0,0"
+                              Checked="AutoDateTimeToggleButton_Checked" Unchecked="AutoDateTimeToggleButton_Unchecked" />
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Width="300" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#f0f0f0">
+
+            <!-- Header -->
+            <TextBlock Text="Hardware" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="10"/>
+
+            <!-- Toggle Button for Sound On/Off -->
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Sound" FontSize="16" VerticalAlignment="Center" />
+                <ToggleButton x:Name="SoundToggleButton" Content="Off" Width="100" Height="30" Margin="10,0,0,0"
+                              Checked="SoundToggleButton_Checked" Unchecked="SoundToggleButton_Unchecked" />
+            </StackPanel>
+
+            <!-- Camera Label and Dropdown (ComboBox) -->
+            <TextBlock Text="Camera" FontSize="16" Margin="10"/>
+            <ComboBox x:Name="CameraComboBox" FontSize="16" Width="200" Margin="10">
+                <ComboBoxItem Content="USB" />
+                <ComboBoxItem Content="IP" />
+            </ComboBox>
+        </StackPanel>
     </Grid>
 </Window>

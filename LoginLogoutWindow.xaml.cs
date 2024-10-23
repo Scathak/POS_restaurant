@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace POS_restaurant
 {
@@ -22,13 +23,34 @@ namespace POS_restaurant
         public LoginLogoutWindow()
         {
             InitializeComponent();
+            // Start timer to update the clock
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += (s, e) => CurrentDateTime.Text = DateTime.Now.ToString("dd MMM yyyy HH:mm:ss");
+            timer.Start();
+        }
+        private void KeyCommand(object sender, RoutedEventArgs e)
+        {
+            var key = (sender as Button).Content.ToString();
+            LoginTextBox.Text += key;
         }
 
+        private void ClearCommand(object sender, RoutedEventArgs e)
+        {
+            LoginTextBox.Text = string.Empty;
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // Logic for logging in
             MainOperations MainOperations = new MainOperations();
             MainOperations.Show();
+            this.Close();
+        }
+        private void LoginCommand(object sender, RoutedEventArgs e)
+        {
+            // Add authentication logic here
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
             this.Close();
         }
     }

@@ -5,8 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:POS_restaurant"
         mc:Ignorable="d"
-        Title="LaborManagementWindow" Height="450" Width="800">
+        Title="LaborManagementWindow" 
+        WindowState="Maximized"
+        WindowStyle="None">
     <Grid>
+        <DataGrid AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Number" Width="*"/>
+                <DataGridTextColumn Header="First Name" Width="*"/>
+                <DataGridTextColumn Header="Last Name" Width="*"/>
+                <DataGridTextColumn Header="Phone number" Width="*"/>
+                <DataGridTextColumn Header="Email" Width="*"/>
+                <DataGridTextColumn Header="List of Shifts" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Add" Width="100" Height="50" Margin="10"/>
+            <Button Content="Delete" Width="100" Height="50" Margin="10"/>
+            <Button Content="Edit" Width="100" Height="50" Margin="10"/>
+        </StackPanel>
+        <DockPanel>
+            <!-- Calendar Control -->
+            <Calendar x:Name="ColorCalendar"
+                  DisplayDateStart="2024-01-01"
+                  DisplayDateEnd="2024-12-31"
+                  SelectionMode="None"
+                  Loaded="Calendar_Loaded"
+                  VerticalAlignment="Center"
+                  />
+        </DockPanel>
+        
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="300">
+
+            <!-- Label for the text input -->
+            <TextBlock Text="Arrangements per One day" FontSize="16" FontWeight="Bold" Margin="10"/>
+
+            <!-- TextBox for number input -->
+            <TextBox x:Name="NumberTextBox" FontSize="16" Width="80" Height="40" Text="1" 
+                PreviewTextInput="NumberTextBox_PreviewTextInput" Margin="10" />
+        </StackPanel>
         
     </Grid>
 </Window>

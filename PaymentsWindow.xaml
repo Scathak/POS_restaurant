@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:POS_restaurant"
         mc:Ignorable="d"
-        Title="PaymentsWindow" Height="450" Width="800">
+        Title="PaymentsWindow"         
+        WindowState="Maximized"
+        WindowStyle="None">
     <Grid>
-        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Button Content="Cash" Width="100" Height="50" Margin="10"/>
+            <Button Content="Card" Width="100" Height="50" Margin="10"/>
+            <Button Content="QR Code" Width="100" Height="50" Margin="10"/>
+        </StackPanel>
     </Grid>
 </Window>

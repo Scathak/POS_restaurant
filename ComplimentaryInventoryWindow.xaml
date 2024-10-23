@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:POS_restaurant"
         mc:Ignorable="d"
-        Title="ComplimentaryInventoryWindow" Height="450" Width="800">
+        Title="ComplimentaryInventoryWindow" 
+        WindowState="Maximized"
+        WindowStyle="None">
     <Grid>
-        
+        <DataGrid AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Number" Width="*"/>
+                <DataGridTextColumn Header="Name" Width="*"/>
+                <DataGridTextColumn Header="Size" Width="*"/>
+                <DataGridTextColumn Header="Weight" Width="*"/>
+                <DataGridTextColumn Header="Quantity in Stock" Width="*"/>
+                <DataGridTextColumn Header="Initial price" Width="*"/>
+                <DataGridTextColumn Header="Encounting Date" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!-- Add buttons for Add, Delete, Edit at the bottom -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button Content="Add" Width="100" Height="50" Margin="10"/>
+            <Button Content="Delete" Width="100" Height="50" Margin="10"/>
+            <Button Content="Edit" Width="100" Height="50" Margin="10"/>
+        </StackPanel>
+
     </Grid>
 </Window>

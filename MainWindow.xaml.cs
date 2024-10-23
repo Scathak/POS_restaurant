@@ -19,9 +19,9 @@ namespace POS_restaurant
         public MainWindow()
         {
             InitializeComponent();
-            OpenLoginWindow();
+            OpenLoginWindow(this, null);
         }
-        private void OpenLoginWindow()
+        private void OpenLoginWindow(object sender, RoutedEventArgs e)
         {
             LoginLogoutWindow loginWindow = new LoginLogoutWindow();
             loginWindow.Show();

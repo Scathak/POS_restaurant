@@ -7,10 +7,11 @@
 
     <Grid>
         <!-- Background image -->
-        <Image Source="pack://application:,,,/Images/Logo.jpg" Stretch="Fill"/>
-
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\_prog\pos\POS_restaurant\Images\Logo.jpg" Stretch="Fill"/>
+        </Grid.Background>
         <!-- Date and Time in the top right corner -->
-        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" FontSize="20" Foreground="White" Text="{Binding DateTime}" />
+        <TextBlock x:Name="CurrentDateTime" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" FontSize="20" Foreground="Black" Text="{Binding DateTime}" />
 
         <!-- Login section -->
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">

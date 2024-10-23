@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:POS_restaurant"
         mc:Ignorable="d"
-        Title="MenuManagementWindow" Height="450" Width="800">
+        Title="MenuManagementWindow"
+        WindowState="Maximized"
+        WindowStyle="None">
     <Grid>
-        
+        <DataGrid AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Category" Width="*"/>
+                <DataGridTextColumn Header="Name" Width="*"/>
+                <DataGridTextColumn Header="Ingredients with Weight" Width="*"/>
+                <DataGridTextColumn Header="Production Cost" Width="*"/>
+                <DataGridTextColumn Header="Retail Price" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!-- Add buttons for Add, Delete, Edit at the bottom -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button Content="Add" Width="100" Height="50" Margin="10"/>
+            <Button Content="Delete" Width="100" Height="50" Margin="10"/>
+            <Button Content="Edit" Width="100" Height="50" Margin="10"/>
+            <Button Content="Create Price Tag" Width="auto" Height="50" Margin="10"/>
+            <Button Content="Print Price Tag" Width="auto" Height="50" Margin="10"/>
+            <Button Content="Send price Tag" Width="auto" Height="50" Margin="10"/>
+
+        </StackPanel>
     </Grid>
 </Window>
