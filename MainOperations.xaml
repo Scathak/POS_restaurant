@@ -7,16 +7,22 @@
         mc:Ignorable="d"
         Title="MainOperations" WindowState="Maximized" WindowStyle="None">
     <Grid>
+        
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-
-        <!-- Date and Time on Top -->
-        <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" Text="{Binding CurrentDateTime}"/>
-
-        <UniformGrid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <local:UserControl1 x:Name="MainHeader" VerticalAlignment="Top"  Grid.Row="0" Grid.ColumnSpan="3"/>
+        <!-- Date and Time on Top 
+        <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" Text="{Binding CurrentDateTime}"/> -->
+        <GridSplitter Grid.Column="0" Grid.Row="1" Width="5" HorizontalAlignment="Stretch"/>
+        <UniformGrid Grid.Column="0" Grid.Row="1">
             <!-- Left: DataGrid with Operations -->
             <DataGrid Grid.Column="0" AutoGenerateColumns="False">
                 <DataGrid.Columns>
@@ -27,7 +33,8 @@
                     <DataGridTextColumn Header="Total"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Grid>
+
+            <Grid Grid.Column="0" Grid.Row="1">
                 <!-- Left-side panel with buttons for shapes -->
                 <StackPanel Width="150" HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="#f0f0f0">
                     <Button x:Name="CircleButton" Content="Additional" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightBlue" AllowDrop="False" />
@@ -42,9 +49,9 @@
             </Grid>
         </UniformGrid>
         <!-- Center: Numeric Keypad and Buttons -->
-        <StackPanel Grid.Column="1">
+        <StackPanel Grid.Column="1" Grid.Row="1">
             <UniformGrid Rows="4" Columns="3">
-                <Button Content="1" FontSize="24"/>
+                <Button  Height="80" Content="1" FontSize="24"/>
                 <Button Content="2" FontSize="24"/>
                 <Button Content="3" FontSize="24"/>
                 <Button Content="4" FontSize="24"/>
@@ -66,7 +73,7 @@
         </StackPanel>
 
         <!-- Right: Category and Items -->
-        <StackPanel Grid.Column="2">
+        <StackPanel Grid.Column="2" Grid.Row="1">
             <UniformGrid>
                 <Button Content="Breakfast"/>
                 <Button Content="Main"/>

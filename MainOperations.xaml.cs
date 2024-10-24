@@ -23,6 +23,7 @@ namespace POS_restaurant
         public MainOperations()
         {
             InitializeComponent();
+            MainHeader.SetWindowName("Main Operations");
 
             // Attach drag-and-drop handlers
             CircleButton.MouseMove += Shape_MouseMove;

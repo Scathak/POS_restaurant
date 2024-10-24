@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\richtextbox.xml" />
+   
   </ItemGroup>
 
   <ItemGroup>
