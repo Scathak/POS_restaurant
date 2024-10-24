@@ -22,6 +22,8 @@ namespace POS_restaurant
         public SetupWindow()
         {
             InitializeComponent();
+            MainHeader.SetWindowName("9. Setups page");
+
             // Set default index for the dropdowns
             ColorSchemeComboBox.SelectedIndex = 0; // Default: Light
             LanguageComboBox.SelectedIndex = 0; // Default: Turkish

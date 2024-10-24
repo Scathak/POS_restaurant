@@ -31,6 +31,7 @@ namespace POS_restaurant
         public LaborManagementWindow()
         {
             InitializeComponent();
+            MainHeader.SetWindowName("8. Labor Management");
         }
         // Handles the calendar loaded event
         private void Calendar_Loaded(object sender, RoutedEventArgs e)

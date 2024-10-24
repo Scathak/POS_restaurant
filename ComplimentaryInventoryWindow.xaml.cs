@@ -22,6 +22,7 @@ namespace POS_restaurant
         public ComplimentaryInventoryWindow()
         {
             InitializeComponent();
+            MainHeader.SetWindowName("3. Inventory of commercial equipment");
         }
     }
 }

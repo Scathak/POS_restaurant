@@ -11,6 +11,7 @@ namespace POS_restaurant
         public ReportingAnalyticsWindow()
         {
             InitializeComponent();
+            MainHeader.SetWindowName("10. Reporting and analytics");
         }
         private void AnalyticalPanel_Click(object sender, MouseButtonEventArgs e)
         {

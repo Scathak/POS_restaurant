@@ -10,8 +10,19 @@
         WindowState="Maximized"
         WindowStyle="None">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <local:UserControl1 x:Name="MainHeader" VerticalAlignment="Top" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <local:UserControl2 x:Name="MainMenu" HorizontalAlignment="Right"  Grid.Row="1" Grid.Column="3"/>
+        
         <StackPanel x:Name="AnalyticalPanel" Background="#f0f0f0" Width="250" Height="350" Margin="10"
-                    MouseLeftButtonUp="AnalyticalPanel_Click">
+                    MouseLeftButtonUp="AnalyticalPanel_Click" Grid.Row="1">
 
             <!-- Header of the widget -->
             <TextBlock Text="Sales Data Analysis" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10"/>

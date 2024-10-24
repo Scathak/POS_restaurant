@@ -22,6 +22,7 @@ namespace POS_restaurant
         public PaymentsWindow()
         {
             InitializeComponent();
+            MainHeader.SetWindowName("6. Payments");
         }
     }
 }

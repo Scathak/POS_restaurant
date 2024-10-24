@@ -9,13 +9,24 @@
         WindowState="Maximized"
         WindowStyle="None">
     <Grid>
-        <StackPanel Width="400" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <local:UserControl1 x:Name="MainHeader" VerticalAlignment="Top" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <local:UserControl2 x:Name="MainMenu" HorizontalAlignment="Right"  Grid.Row="1" Grid.Column="3" Grid.RowSpan="2"/>
+        <StackPanel Width="400" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1">
             <RichTextBox Name="CoinsAndCash" AcceptsTab="True" VerticalScrollBarVisibility="Visible">
                 <FlowDocument>
                 </FlowDocument>
             </RichTextBox>
         </StackPanel>
-        <StackPanel Width="400" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Width="400" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2">
 
             <!-- Preferences Header -->
             <TextBlock Text="Preferences" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="10"/>
@@ -57,7 +68,7 @@
                               Checked="AutoDateTimeToggleButton_Checked" Unchecked="AutoDateTimeToggleButton_Unchecked" />
             </StackPanel>
         </StackPanel>
-        <StackPanel Width="300" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#f0f0f0">
+        <StackPanel Width="300" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#f0f0f0" Grid.Row="2">
 
             <!-- Header -->
             <TextBlock Text="Hardware" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="10"/>

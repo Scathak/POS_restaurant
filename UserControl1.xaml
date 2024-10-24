@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:POS_restaurant"
              mc:Ignorable="d" 
-             Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+             Height="40" HorizontalAlignment="Stretch" VerticalAlignment="Top">
     <Grid Background="#f0f0f0">
         <!-- Active Window Name -->
         <TextBlock x:Name="WindowNameTextBlock" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" Margin="10" />

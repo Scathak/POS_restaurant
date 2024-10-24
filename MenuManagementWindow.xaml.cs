@@ -22,6 +22,7 @@ namespace POS_restaurant
         public MenuManagementWindow()
         {
             InitializeComponent();
+            MainHeader.SetWindowName("7. Menu Management");
         }
     }
 }

@@ -22,6 +22,7 @@ namespace POS_restaurant
         public GiftLoyaltyWindow()
         {
             InitializeComponent();
+            MainHeader.SetWindowName("5. Gift and loyalty programs");
         }
     }
 }

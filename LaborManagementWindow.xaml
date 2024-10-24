@@ -9,7 +9,20 @@
         WindowState="Maximized"
         WindowStyle="None">
     <Grid>
-        <DataGrid AutoGenerateColumns="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <local:UserControl1 x:Name="MainHeader" VerticalAlignment="Top" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <local:UserControl2 x:Name="MainMenu" HorizontalAlignment="Right"  Grid.Row="1" Grid.Column="3" Grid.RowSpan="3"/>
+        
+        <DataGrid AutoGenerateColumns="False" Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Number" Width="*"/>
                 <DataGridTextColumn Header="First Name" Width="*"/>
@@ -19,12 +32,12 @@
                 <DataGridTextColumn Header="List of Shifts" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2">
             <Button Content="Add" Width="100" Height="50" Margin="10"/>
             <Button Content="Delete" Width="100" Height="50" Margin="10"/>
             <Button Content="Edit" Width="100" Height="50" Margin="10"/>
         </StackPanel>
-        <DockPanel>
+        <DockPanel Grid.Row="3">
             <!-- Calendar Control -->
             <Calendar x:Name="ColorCalendar"
                   DisplayDateStart="2024-01-01"
@@ -35,7 +48,7 @@
                   />
         </DockPanel>
         
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="300">
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="300" Grid.Row="3">
 
             <!-- Label for the text input -->
             <TextBlock Text="Arrangements per One day" FontSize="16" FontWeight="Bold" Margin="10"/>

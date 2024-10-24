@@ -23,6 +23,7 @@ namespace POS_restaurant
         public LoginLogoutWindow()
         {
             InitializeComponent();
+
             // Start timer to update the clock
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);

@@ -13,12 +13,14 @@
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <local:UserControl1 x:Name="MainHeader" VerticalAlignment="Top"  Grid.Row="0" Grid.ColumnSpan="3"/>
+        <local:UserControl1 x:Name="MainHeader" VerticalAlignment="Top"  Grid.Row="0" Grid.ColumnSpan="4"/>
+        <local:UserControl2 x:Name="MainMenu" HorizontalAlignment="Right"  Grid.Row="1" Grid.Column="3"/>
         <!-- Date and Time on Top 
         <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" Text="{Binding CurrentDateTime}"/> -->
         <GridSplitter Grid.Column="0" Grid.Row="1" Width="5" HorizontalAlignment="Stretch"/>

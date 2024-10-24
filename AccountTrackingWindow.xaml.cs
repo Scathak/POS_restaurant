@@ -22,6 +22,7 @@ namespace POS_restaurant
         public AccountTrackingWindow()
         {
             InitializeComponent();
+            MainHeader.SetWindowName("4. Account tracking");
         }
     }
 }
