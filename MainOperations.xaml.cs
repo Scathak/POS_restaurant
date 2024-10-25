@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Text.RegularExpressions;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -15,7 +16,8 @@ namespace POS_restaurant
         public MainOperations()
         {
             InitializeComponent();
-            MainHeader.SetWindowName("Main Operations");
+            MainHeader.SetWindowName("1. Main Operations");
+            NumericTextBox.Focus(); // Set initial focus to the NumericTextBox
 
             // Attach drag-and-drop handlers
             CircleButton.MouseMove += Shape_MouseMove;
@@ -24,6 +26,13 @@ namespace POS_restaurant
 
             DrawingCanvas.Drop += DrawingCanvas_Drop;
             DrawingCanvas.AllowDrop = true;
+        }
+        // Event handler for restricting input to numeric only
+        private void NumericTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            // Regular expression to allow only numeric input (digits only)
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text); // If non-numeric, set Handled to true to prevent input
         }
         // Handles the dragging of shapes from the buttons
         private void Shape_MouseMove(object sender, MouseEventArgs e)
@@ -121,6 +130,42 @@ namespace POS_restaurant
                 })
             };
             return triangle;
+        }
+        private void NumericKeysDeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            int cursorPosition = NumericTextBox.CaretIndex;
+
+            if (cursorPosition > 0) // Ensure there's a character before the cursor to delete
+            {
+                // Remove the character before the cursor position
+                NumericTextBox.Text = NumericTextBox.Text.Remove(cursorPosition - 1, 1);
+                NumericTextBox.CaretIndex = cursorPosition - 1; // Move the cursor back one position
+            }
+        }
+        private void NumericKeysEnterButton_Click(object sender, RoutedEventArgs e)
+        {
+            NumericTextBox.Text = "";
+        }
+        private void NumericKeysButton_Click(object sender, RoutedEventArgs e)
+        {
+            var key = (sender as Button).Content.ToString();
+            int caretIndex = NumericTextBox.CaretIndex;
+            // Insert the new digit at the current caret position
+            NumericTextBox.Text = NumericTextBox.Text.Insert(caretIndex, key);
+            // Update the caret position to be after the inserted digit
+            NumericTextBox.CaretIndex = caretIndex + 1;
+        }
+        // Event handler to return focus to NumericTextBox after a button is clicked
+        private void Button_GotFocus(object sender, RoutedEventArgs e)
+        {
+            NumericTextBox.Focus();
+            //NumericTextBox.CaretIndex = NumericTextBox.Text.Length;
+        }
+
+        // Set the cursor to the end of the text when the NumericTextBox regains focus
+        private void NumericTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            //NumericTextBox.CaretIndex = NumericTextBox.Text.Length;
         }
     }
 }

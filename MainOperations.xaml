@@ -6,6 +6,12 @@
         xmlns:local="clr-namespace:POS_restaurant"
         mc:Ignorable="d"
         Title="MainOperations" WindowState="Maximized" WindowStyle="None">
+    <Window.Resources>
+        <Style x:Key="GroupButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="Height" Value="80"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         
         
@@ -52,19 +58,22 @@
         </UniformGrid>
         <!-- Center: Numeric Keypad and Buttons -->
         <StackPanel Grid.Column="1" Grid.Row="1">
+            <TextBox x:Name="NumericTextBox" FontSize="35" Height="auto" TextAlignment="Left"
+                 PreviewTextInput="NumericTextBox_PreviewTextInput" VerticalContentAlignment="Center"
+                 GotFocus="NumericTextBox_GotFocus"/>
             <UniformGrid Rows="4" Columns="3">
-                <Button  Height="80" Content="1" FontSize="24"/>
-                <Button Content="2" FontSize="24"/>
-                <Button Content="3" FontSize="24"/>
-                <Button Content="4" FontSize="24"/>
-                <Button Content="5" FontSize="24"/>
-                <Button Content="6" FontSize="24"/>
-                <Button Content="7" FontSize="24"/>
-                <Button Content="8" FontSize="24"/>
-                <Button Content="9" FontSize="24"/>
-                <Button Content="Clear" FontSize="20"/>
-                <Button Content="0" FontSize="24"/>
-                <Button Content="Enter" FontSize="24"/>
+                <Button Content="1" Style="{StaticResource GroupButtonStyle}" Click="NumericKeysButton_Click" GotFocus="Button_GotFocus"/>
+                <Button Content="2" Style="{StaticResource GroupButtonStyle}" Click="NumericKeysButton_Click" GotFocus="Button_GotFocus"/>
+                <Button Content="3" Style="{StaticResource GroupButtonStyle}" Click="NumericKeysButton_Click" GotFocus="Button_GotFocus"/>
+                <Button Content="4" Style="{StaticResource GroupButtonStyle}" Click="NumericKeysButton_Click" GotFocus="Button_GotFocus" />
+                <Button Content="5" Style="{StaticResource GroupButtonStyle}" Click="NumericKeysButton_Click" GotFocus="Button_GotFocus"/>
+                <Button Content="6" Style="{StaticResource GroupButtonStyle}" Click="NumericKeysButton_Click" GotFocus="Button_GotFocus"/>
+                <Button Content="7" Style="{StaticResource GroupButtonStyle}" Click="NumericKeysButton_Click" GotFocus="Button_GotFocus"/>
+                <Button Content="8" Style="{StaticResource GroupButtonStyle}" Click="NumericKeysButton_Click" GotFocus="Button_GotFocus"/>
+                <Button Content="9" Style="{StaticResource GroupButtonStyle}" Click="NumericKeysButton_Click" GotFocus="Button_GotFocus"/>
+                <Button Content="Delete" FontSize="20" Click="NumericKeysDeleteButton_Click" GotFocus="Button_GotFocus"/>
+                <Button Content="0" Style="{StaticResource GroupButtonStyle}" Click="NumericKeysButton_Click" GotFocus="Button_GotFocus"/>
+                <Button Content="Enter" FontSize="24" GotFocus="Button_GotFocus" Click="NumericKeysEnterButton_Click"/>
                 <!-- More buttons -->
             </UniformGrid>
             <UniformGrid>
