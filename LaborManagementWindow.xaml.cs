@@ -1,25 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.IO;
 
 namespace POS_restaurant
 {
     /// <summary>
-    /// Interaction logic for LaborManagementWindow.xaml
+    /// Interaction logic for labourManagementWindow.xaml
     /// </summary>
-    public partial class LaborManagementWindow : Window
+ 
+    public class LabourRecord
+    {
+        [Key]
+        public int Number { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
+        public string ShiftDates { get; set; } // Comma-separated list of shift dates
+    }
+    public partial class labourManagementWindow : Window
     {
         // Define the list of dates and their associated colors
         private Dictionary<DateTime, Brush> coloredDates = new Dictionary<DateTime, Brush>
@@ -28,10 +31,70 @@ namespace POS_restaurant
             { new DateTime(2024, 10, 20), Brushes.LightGreen },
             { new DateTime(2024, 10, 25), Brushes.LightPink }
         };
-        public LaborManagementWindow()
+        
+        private LabourContext _dbContext;
+        private readonly string _databasePath;
+        private static labourManagementWindow _instance;
+
+        public labourManagementWindow()
         {
             InitializeComponent();
             MainHeader.SetWindowName("8. Labor Management");
+
+            _databasePath = "LabourManagement_202410251713.db";
+
+            // Check if the database file exists
+            if (!File.Exists(_databasePath))
+            {
+                MessageBox.Show($"DB file not found: {_databasePath}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Close();
+                return;
+            }
+
+            // Initialize the database context and load data
+            try
+            {
+
+                _dbContext = new LabourContext(_databasePath);
+                _dbContext.Database.EnsureCreated();
+
+                // Load data into DataGrid
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The data format is wrong.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Close();
+            }
+        }
+        // Public property to get the single instance of labourManagementWindow
+        public static labourManagementWindow Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new labourManagementWindow();
+                }
+                return _instance;
+            }
+        }
+        protected override void OnClosed(EventArgs e)
+        {
+            _dbContext?.Dispose();
+            base.OnClosed(e);
+            _instance = null; // Clear the instance when the window is closed
+        }
+        private void LoadData()
+        {
+            try
+            {
+                LabourDataGrid.ItemsSource = _dbContext.LabourRecords.ToList();
+            }
+            catch (Exception)
+            {
+                throw new InvalidOperationException("The data format is wrong.");
+            }
         }
         // Handles the calendar loaded event
         private void Calendar_Loaded(object sender, RoutedEventArgs e)
@@ -75,12 +138,20 @@ namespace POS_restaurant
                 }
             }
         }
-        // Event handler to restrict input to numbers only
-        private void NumberTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void KeyButton_Click(object sender, RoutedEventArgs e)
         {
-            // Regular expression to allow only numeric input
-            Regex regex = new Regex("[^0-9]+"); // Only digits
-            e.Handled = regex.IsMatch(e.Text);
+            var key = (sender as Button).Content.ToString();
+            int.TryParse(NumericTextBox.Text, out int result);
+            if (key == "+") { if(result < 5) result += 1; } else { if(result > 0) result -= 1; }
+            NumericTextBox.Text = result.ToString();
+        }
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Create an instance of the MainWindow (data entry form)
+            var dataEntryForm = new Window1();
+            // Show the data entry form
+            // Use ShowDialog to open it as a modal window
+            dataEntryForm.ShowDialog();
         }
     }
 }

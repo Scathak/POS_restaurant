@@ -1,13 +1,5 @@
-﻿using System.Text;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace POS_restaurant
 {
@@ -45,10 +37,11 @@ namespace POS_restaurant
             giftLoyalty.Show();
             this.Close();
         }
-        private void OpenLaborManagement(object sender, RoutedEventArgs e)
+        private void OpenlabourManagement(object sender, RoutedEventArgs e)
         {
-            LaborManagementWindow laborManagement = new LaborManagementWindow();
-            laborManagement.Show();
+            
+            labourManagementWindow labourManagement = labourManagementWindow.Instance;
+            labourManagement.Show();
             this.Close();
         }
         private void OpenAccountTracking(object sender, RoutedEventArgs e)

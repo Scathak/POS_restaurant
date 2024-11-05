@@ -30,7 +30,7 @@
             <Button Width="50" Height="50" Click="MenuManagementButton_Click">
                 <TextBlock Text="7. Menu Management" FontSize="9" TextWrapping="Wrap" TextAlignment="Center"/>
             </Button>
-            <Button Width="50" Height="50" Click="LaborManagementButton_Click">
+            <Button Width="50" Height="50" Click="labourManagementButton_Click">
                 <TextBlock Text="8. Labor Management" FontSize="9" TextWrapping="Wrap" TextAlignment="Center"/>
             </Button>
             <Button Width="50" Height="50" Click="SetupWindowButton_Click">

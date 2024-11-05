@@ -159,13 +159,11 @@ namespace POS_restaurant
         private void Button_GotFocus(object sender, RoutedEventArgs e)
         {
             NumericTextBox.Focus();
-            //NumericTextBox.CaretIndex = NumericTextBox.Text.Length;
         }
 
         // Set the cursor to the end of the text when the NumericTextBox regains focus
         private void NumericTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            //NumericTextBox.CaretIndex = NumericTextBox.Text.Length;
         }
     }
 }

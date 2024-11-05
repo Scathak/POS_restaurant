@@ -1,0 +1,27 @@
+// Generate the database file name
+//_databasePath = $"POS_Restaurant_{DateTime.Now:yyyyMMdd_HH_mm}.db";
+_databasePath = "C:\\_prog\\pos\\POS_restaurant\\POS_Restaurant_202410251713.db";
+
+// Check if the database file exists
+if (!File.Exists(_databasePath))
+{
+    MessageBox.Show($"DB file not found: {_databasePath}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+    Close();
+    return;
+}
+
+// Initialize the database context and load data
+try
+{
+
+    _dbContext = new LabourContext(_databasePath);
+    _dbContext.Database.EnsureCreated();
+
+    // Load data into DataGrid
+    LoadData();
+}
+catch (Exception ex)
+{
+    MessageBox.Show("The data format is wrong.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+    Close();
+}

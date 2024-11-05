@@ -57,10 +57,10 @@ namespace POS_restaurant
             Window.GetWindow(this).Close();
         }
         
-        private void LaborManagementButton_Click(object sender, RoutedEventArgs e)
+        private void labourManagementButton_Click(object sender, RoutedEventArgs e)
         {
-            var laborManagementWindow = new LaborManagementWindow();
-            laborManagementWindow.Show();
+            var labourManagementWindow = new labourManagementWindow();
+            labourManagementWindow.Show();
             Window.GetWindow(this).Close();
         }
         private void SetupWindowButton_Click(object sender, RoutedEventArgs e)

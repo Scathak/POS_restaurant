@@ -9,15 +9,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-   
+    <None Remove="DB connection.txt" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="LiveCharts.wpf" Version="0.9.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.10" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="Images\Logo.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="LabourManagement_202410251713.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
