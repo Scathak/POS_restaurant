@@ -11,53 +11,72 @@
             <Setter Property="FontSize" Value="40"/>
             <Setter Property="Height" Value="80"/>
         </Style>
+        <Style x:Key="GroupButtonStyleCategories" TargetType="Button">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Height" Value="80"/>
+        </Style>
+        <Style x:Key="ProductsButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Height" Value="80"/>
+            <Setter Property="Width" Value="80"/>
+        </Style>
     </Window.Resources>
     <Grid>
-        
-        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <local:UserControl1 x:Name="MainHeader" VerticalAlignment="Top"  Grid.Row="0" Grid.ColumnSpan="4"/>
-        <local:UserControl2 x:Name="MainMenu" HorizontalAlignment="Right"  Grid.Row="1" Grid.Column="3"/>
-        <!-- Date and Time on Top 
-        <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" Text="{Binding CurrentDateTime}"/> -->
-        <GridSplitter Grid.Column="0" Grid.Row="1" Width="5" HorizontalAlignment="Stretch"/>
-        <UniformGrid Grid.Column="0" Grid.Row="1">
-            <!-- Left: DataGrid with Operations -->
-            <DataGrid Grid.Column="0" AutoGenerateColumns="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Operation No."/>
-                    <DataGridTextColumn Header="Name"/>
-                    <DataGridTextColumn Header="Price"/>
-                    <DataGridTextColumn Header="Quantity"/>
-                    <DataGridTextColumn Header="Total"/>
-                </DataGrid.Columns>
-            </DataGrid>
+        
+        <local:UserControl1 x:Name="MainHeader" VerticalAlignment="Top"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"/>
+        <local:UserControl2 x:Name="MainMenu" HorizontalAlignment="Right" Grid.Row="1" Grid.RowSpan="3" Grid.Column="5"/>
 
-            <Grid Grid.Column="0" Grid.Row="1">
-                <!-- Left-side panel with buttons for shapes -->
-                <StackPanel Width="150" HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="#f0f0f0">
-                    <Button x:Name="CircleButton" Content="Additional" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightBlue" AllowDrop="False" />
-                    <Button x:Name="SquareButton" Content="Table" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightGreen" AllowDrop="False" />
-                    <Button x:Name="TriangleButton" Content="Cassier" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightCoral" AllowDrop="False" />
-                </StackPanel>
+        <!-- Left: DataGrid and scheme -->
+       
+        <!-- Left: DataGrid with Operations -->
+        <DataGrid x:Name="MainOperationDataGrid" Grid.Column="0" Grid.Row="1" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Number" Width="auto" Binding="{Binding OperationNumber}"/>
+                <DataGridTextColumn Header="Name" Width="auto" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Price" Width="auto" Binding="{Binding Price}" />
+                <DataGridTextColumn Header="Quantity" Width="auto" Binding="{Binding Quantity}" />
+                <DataGridTextColumn Header="Total" Width="auto" Binding="{Binding Total}" />
+                <DataGridTextColumn Header="Table number" Width="auto" Binding="{Binding Table}" />
+                <DataGridTextColumn Header="Date" Width="auto" Binding="{Binding Date}" />
+                <DataGridTextColumn Header="Time" Width="auto" Binding="{Binding Time}" />
+            </DataGrid.Columns>
+        </DataGrid>
+            
+        <GridSplitter Grid.Column="0" Grid.Row="2" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" ResizeDirection="Rows"/>
 
-                <!-- Main drawing panel -->
-                <Canvas x:Name="DrawingCanvas" Background="LightGray" AllowDrop="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="150,0,0,0">
-                    <!-- Elements will be dropped here -->
-                </Canvas>
-            </Grid>
-        </UniformGrid>
+        
+        <!-- Left-side panel with buttons for shapes -->
+        <StackPanel Grid.Column="0" Grid.Row="3" Width="auto" HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Background="#f0f0f0">
+            <Button x:Name="TriangleButton" Content="Cassier" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightCoral" AllowDrop="False" />
+            <Button x:Name="SquareButton" Content="Table" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightGreen" AllowDrop="False" />
+            <Button x:Name="CircleButton" Content="Additional" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightBlue" AllowDrop="False" />
+        </StackPanel>
+
+        <!-- Main drawing panel -->
+        <Canvas Grid.Column="0" Grid.Row="3" x:Name="DrawingCanvas" Background="LightGray" AllowDrop="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,50">
+            <!-- Elements will be dropped here -->
+        </Canvas>
+  
+      
+        
+        <GridSplitter Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" Width="5" HorizontalAlignment="Left" VerticalAlignment="Stretch" ResizeDirection="Columns"/>
+        
         <!-- Center: Numeric Keypad and Buttons -->
-        <StackPanel Grid.Column="1" Grid.Row="1">
+        <StackPanel Grid.Column="2" Grid.Row="1">
             <TextBox x:Name="NumericTextBox" FontSize="35" Height="auto" TextAlignment="Left"
                  PreviewTextInput="NumericTextBox_PreviewTextInput" VerticalContentAlignment="Center"
                  GotFocus="NumericTextBox_GotFocus"/>
@@ -77,21 +96,39 @@
                 <!-- More buttons -->
             </UniformGrid>
             <UniformGrid>
-                <Button Content="Add"/>
+                <Button Content="Add">
+                </Button>
                 <Button Content="Delete"/>
             </UniformGrid>
             <!-- More action buttons -->
         </StackPanel>
-
+        
+        <GridSplitter Grid.Column="3" Grid.Row="1" Grid.RowSpan="3" Width="5" HorizontalAlignment="Left" VerticalAlignment="Stretch" ResizeDirection="Columns"/>
+        
         <!-- Right: Category and Items -->
-        <StackPanel Grid.Column="2" Grid.Row="1">
+        <StackPanel Grid.Column="4" Grid.Row="1">
             <UniformGrid>
-                <Button Content="Breakfast"/>
-                <Button Content="Main"/>
-                <Button Content="Desserts"/>
-                <Button Content="Drinks"/>
+                <Button Content="Breakfast" Style="{StaticResource GroupButtonStyleCategories}"/>
+                <Button Content="Main" Style="{StaticResource GroupButtonStyleCategories}"/>
+                <Button Content="Desserts" Style="{StaticResource GroupButtonStyleCategories}" />
+                <Button Content="Drinks" Style="{StaticResource GroupButtonStyleCategories}"/>
             </UniformGrid>
+
             <!-- More categories -->
+        </StackPanel>
+        <StackPanel Grid.Column="4" Grid.Row="1" Orientation="Horizontal">
+            <Button  Style="{StaticResource ProductsButtonStyle}">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="C:\_prog\pos\POS_restaurant\Images\iTea_01.jpg" Width="48" Height="48" Stretch="Uniform"/>
+                    <TextBlock Text="Tea" TextWrapping="Wrap" TextAlignment="Center"/>
+                </StackPanel>                
+            </Button>
+            <Button Style="{StaticResource ProductsButtonStyle}" >
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="C:\_prog\pos\POS_restaurant\Images\iCoffee_01.jpg" Width="48" Height="48" Stretch="Uniform"/>
+                    <TextBlock Text="Coffee" TextWrapping="Wrap" TextAlignment="Center"/>
+                </StackPanel>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

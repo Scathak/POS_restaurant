@@ -54,5 +54,10 @@ namespace POS_restaurant
             mainWindow.Show();
             this.Close();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(System.Reflection.Assembly.GetExecutingAssembly().GetName().Name);
+        }
     }
 }

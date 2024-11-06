@@ -4,7 +4,13 @@
         Title="Login/Logout"
         WindowState="Maximized"
         WindowStyle="None">
-
+    <Window.Resources>
+        <Style x:Key="GroupButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="Height" Value="80"/>
+            <Setter Property="Width" Value="80"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <!-- Background image -->
         <Grid.Background>
@@ -17,19 +23,18 @@
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBox x:Name="LoginTextBox" Width="200" Height="40" FontSize="18" Text="Enter PIN" AutomationProperties.HelpText="Enter PIN"/>
             <UniformGrid Rows="4" Columns="3" Margin="20">
-                <Button Content="1" FontSize="24"/>
-                <Button Content="2" FontSize="24"/>
-                <Button Content="3" FontSize="24"/>
-                <Button Content="4" FontSize="24"/>
-                <Button Content="5" FontSize="24"/>
-                <Button Content="6" FontSize="24"/>
-                <Button Content="7" FontSize="24"/>
-                <Button Content="8" FontSize="24"/>
-                <Button Content="9" FontSize="24"/>
+                <Button Content="1" Style="{StaticResource GroupButtonStyle}" Click="Button_Click_1"/>
+                <Button Content="2" Style="{StaticResource GroupButtonStyle}" />
+                <Button Content="3" Style="{StaticResource GroupButtonStyle}" />
+                <Button Content="4" Style="{StaticResource GroupButtonStyle}" />
+                <Button Content="5" Style="{StaticResource GroupButtonStyle}" />
+                <Button Content="6" Style="{StaticResource GroupButtonStyle}" />
+                <Button Content="7" Style="{StaticResource GroupButtonStyle}" />
+                <Button Content="8" Style="{StaticResource GroupButtonStyle}" />
+                <Button Content="9" Style="{StaticResource GroupButtonStyle}" />
                 <Button Content="Clear" FontSize="20"/>
-                <Button Content="0" FontSize="24"/>
-
-                <Button Content="Login" FontSize="24" Click="Button_Click"/>
+                <Button Content="0" Style="{StaticResource GroupButtonStyle}" />
+                <Button Content="Login" FontSize="24"  Click="Button_Click"/>
             </UniformGrid>
         </StackPanel>
     </Grid>
