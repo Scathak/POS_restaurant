@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:sys="clr-namespace:System;assembly=netstandard">
+    <!-- Button Content Texts -->
+    <sys:String x:Key="BreakfastText">Kahvaltı</sys:String>
+    <sys:String x:Key="MainCoursesText">Main Courses</sys:String>
+    <sys:String x:Key="DrinksText">Drinks</sys:String>
+    <sys:String x:Key="DessertsText">Desserts</sys:String>
+    <sys:String x:Key="ServiceChargesText">Service Charges</sys:String>
+    <sys:String x:Key="DiscountsText">Discounts</sys:String>
+    <sys:String x:Key="FamilyGroupsText">Family Groups</sys:String>
+    <sys:String x:Key="MajorGroupsText">Major Groups</sys:String>
+    <sys:String x:Key="CustomReportsText">Custom Reports</sys:String>
+    <sys:String x:Key="OpenChecksText">Open Checks</sys:String>
+
+</ResourceDictionary>

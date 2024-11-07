@@ -14,15 +14,15 @@
     <Grid>
         <!-- Background image -->
         <Grid.Background>
-            <ImageBrush ImageSource="C:\_prog\pos\POS_restaurant\Images\Logo.jpg" Stretch="Fill"/>
+            <ImageBrush ImageSource="C:\_prog\pos\POS_restaurant\Images\Logo2.jpg" Stretch="Fill"/>
         </Grid.Background>
         <!-- Date and Time in the top right corner -->
-        <TextBlock x:Name="CurrentDateTime" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" FontSize="20" Foreground="Black" Text="{Binding DateTime}" />
+        <TextBlock x:Name="CurrentDateTime" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" FontSize="20" Foreground="#FFD700" Text="{Binding DateTime}" />
 
         <!-- Login section -->
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBox x:Name="LoginTextBox" Width="200" Height="40" FontSize="18" Text="Enter PIN" AutomationProperties.HelpText="Enter PIN"/>
-            <UniformGrid Rows="4" Columns="3" Margin="20">
+            <PasswordBox x:Name="LoginTextBox" Width="240" Height="80" FontSize="40" AutomationProperties.HelpText="Enter PIN" />
+            <UniformGrid Rows="4" Columns="3" Margin="20" Opacity="0.7">
                 <Button Content="1" Style="{StaticResource GroupButtonStyle}" Click="Button_Click_1"/>
                 <Button Content="2" Style="{StaticResource GroupButtonStyle}" />
                 <Button Content="3" Style="{StaticResource GroupButtonStyle}" />

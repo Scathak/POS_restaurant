@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:POS_restaurant"
+        xmlns:sys="clr-namespace:System;assembly=netstandard"
+        
         mc:Ignorable="d"
         Title="MainOperations" WindowState="Maximized" WindowStyle="None">
     <Window.Resources>
@@ -20,6 +22,7 @@
             <Setter Property="Height" Value="80"/>
             <Setter Property="Width" Value="80"/>
         </Style>
+        
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -108,7 +111,7 @@
         <!-- Right: Category and Items -->
         <StackPanel Grid.Column="4" Grid.Row="1">
             <UniformGrid>
-                <Button Content="Breakfast" Style="{StaticResource GroupButtonStyleCategories}"/>
+                <Button Content="Kahvaltı" Style="{StaticResource GroupButtonStyleCategories}"/>
                 <Button Content="Main" Style="{StaticResource GroupButtonStyleCategories}"/>
                 <Button Content="Desserts" Style="{StaticResource GroupButtonStyleCategories}" />
                 <Button Content="Drinks" Style="{StaticResource GroupButtonStyleCategories}"/>

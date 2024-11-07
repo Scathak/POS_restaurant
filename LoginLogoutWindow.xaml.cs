@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -33,12 +34,18 @@ namespace POS_restaurant
         private void KeyCommand(object sender, RoutedEventArgs e)
         {
             var key = (sender as Button).Content.ToString();
-            LoginTextBox.Text += key;
+            //LoginTextBox.Text += key;
         }
-
+        // Event handler for restricting input to numeric only
+        private void PasswordTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            // Regular expression to allow only numeric input (digits only)
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text); // If non-numeric, set Handled to true to prevent input
+        }
         private void ClearCommand(object sender, RoutedEventArgs e)
         {
-            LoginTextBox.Text = string.Empty;
+            //LoginTextBox.Text = string.Empty;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
