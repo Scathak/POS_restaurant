@@ -67,11 +67,14 @@
             <Button x:Name="TriangleButton" Content="Cassier" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightCoral" AllowDrop="False" />
             <Button x:Name="SquareButton" Content="Table" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightGreen" AllowDrop="False" />
             <Button x:Name="CircleButton" Content="Additional" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightBlue" AllowDrop="False" />
+            <!-- Zoom Control Buttons -->
+            <Button Content="+" Width="30" Height="30" FontSize="20" Click="ZoomInButton_Click"/>
+            <Button Content="-" Width="30" Height="30" FontSize="20" Click="ZoomOutButton_Click"/>
         </StackPanel>
 
         <!-- Main drawing panel -->
         <Canvas Grid.Column="0" Grid.Row="3" x:Name="DrawingCanvas" Background="LightGray" AllowDrop="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,50">
-            <!-- Elements will be dropped here -->
+            
         </Canvas>
   
       

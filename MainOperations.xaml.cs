@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Collections.ObjectModel;
-using System;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -8,12 +6,34 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using System.Text.Json;
+using System.IO;
 
 namespace POS_restaurant
 {
     /// <summary>
     /// Interaction logic for MainOperations.xaml
     /// </summary>
+    public class SerializableShape
+    {
+        public string ShapeType { get; set; } // "Rectangle", "Ellipse", "TextBox" or "Triangle"
+        public double Width { get; set; }
+        public double Height { get; set; }
+        public double X { get; set; }
+        public double Y { get; set; }
+        public string FillColor { get; set; } // Color in hex format
+        public string Text { get; set; } // Only for TextBox
+        public string StrokeColor { get; set; } // Default stroke color is black
+        public double StrokeThickness { get; set; }
+        // Only for Triangle
+        public PointCollection PointsCollection { get; set; } = new PointCollection(new Point[]
+        {
+            new Point(0, 0),  // Top
+            new Point(0, 0), // Bottom Left
+            new Point(0, 0) // Bottom Right
+        });
+        public SerializableShape() { }
+    }
 
     public class MainOperationsRecord
     {
@@ -31,7 +51,11 @@ namespace POS_restaurant
     public partial class MainOperations : Window
     {
         private string _currentShape; // Stores the shape type being dragged
+        private ScaleTransform _scaleTransform = new ScaleTransform(1.0, 1.0); // Initialize scale at 100%
+        private const double ZoomStep = 0.1; // Amount to zoom in/out per step
+
         public ObservableCollection<MainOperationsRecord> Collection { get; set; }
+
         public MainOperations()
         {
             InitializeComponent();
@@ -44,6 +68,8 @@ namespace POS_restaurant
 
             DrawingCanvas.Drop += DrawingCanvas_Drop;
             DrawingCanvas.AllowDrop = true;
+            DrawingCanvas.RenderTransform = _scaleTransform;
+
             Collection = new ObservableCollection<MainOperationsRecord>();
             Collection.Add(new MainOperationsRecord() { OperationNumber = 1, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "14:20" });
             Collection.Add(new MainOperationsRecord() { OperationNumber = 2, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 2, Date = "11/6/2024", Time = "15:10" });
@@ -197,6 +223,206 @@ namespace POS_restaurant
         // Set the cursor to the end of the text when the NumericTextBox regains focus
         private void NumericTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
+        }
+        // Method to zoom in
+        private void ZoomIn()
+        {
+            _scaleTransform.ScaleX += ZoomStep;
+            _scaleTransform.ScaleY += ZoomStep;
+        }
+
+        // Method to zoom out
+        private void ZoomOut()
+        {
+            // Prevent zooming out beyond 10% scale
+            if (_scaleTransform.ScaleX > ZoomStep && _scaleTransform.ScaleY > ZoomStep)
+            {
+                _scaleTransform.ScaleX -= ZoomStep;
+                _scaleTransform.ScaleY -= ZoomStep;
+            }
+        }
+
+        // Event handler for mouse wheel scroll
+        private void Window_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if (e.Delta > 0)
+            {
+                ZoomIn();
+            }
+            else
+            {
+                ZoomOut();
+            }
+        }
+
+        // Event handler for keyboard key press
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Add || e.Key == Key.OemPlus) // '+' key
+            {
+                ZoomIn();
+            }
+            else if (e.Key == Key.Subtract || e.Key == Key.OemMinus) // '-' key
+            {
+                ZoomOut();
+            }
+        }
+
+        // Event handler for Zoom In button click
+        private void ZoomInButton_Click(object sender, RoutedEventArgs e)
+        {
+            ZoomIn();
+            SaveCanvasToJson("canvas_objects.json");
+        }
+
+        // Event handler for Zoom Out button click
+        private void ZoomOutButton_Click(object sender, RoutedEventArgs e)
+        {
+            ZoomOut();
+            LoadCanvasFromJson("canvas_objects.json");
+        }
+        // Method to save all Canvas objects to JSON
+        private void SaveCanvasToJson(string filePath)
+        {
+            var shapes = new List<SerializableShape>();
+
+            foreach (var child in DrawingCanvas.Children)
+            {
+                if (child is Rectangle rect)
+                {
+                    shapes.Add(new SerializableShape
+                    {
+                        ShapeType = "Rectangle",
+                        Width = rect.Width,
+                        Height = rect.Height,
+                        X = Canvas.GetLeft(rect),
+                        Y = Canvas.GetTop(rect),
+                        FillColor = ((SolidColorBrush)rect.Fill).Color.ToString(),
+                        StrokeColor = rect.Stroke.ToString(),
+                        StrokeThickness = rect.StrokeThickness,
+                    });
+                }
+                else if (child is Ellipse ellipse)
+                {
+                    shapes.Add(new SerializableShape
+                    {
+                        ShapeType = "Ellipse",
+                        Width = ellipse.Width,
+                        Height = ellipse.Height,
+                        X = Canvas.GetLeft(ellipse),
+                        Y = Canvas.GetTop(ellipse),
+                        FillColor = ((SolidColorBrush)ellipse.Fill).Color.ToString(),
+                        StrokeColor = ellipse.Stroke.ToString(),
+                        StrokeThickness = ellipse.StrokeThickness,
+                    });
+                }
+                else if (child is TextBox textBlock)
+                {
+                    shapes.Add(new SerializableShape
+                    {
+                        ShapeType = "TextBox",
+                        Width = textBlock.ActualWidth,
+                        Height = textBlock.ActualHeight,
+                        X = Canvas.GetLeft(textBlock),
+                        Y = Canvas.GetTop(textBlock),
+                        Text = textBlock.Text,
+                        FillColor = ((SolidColorBrush)textBlock.Foreground).Color.ToString()
+                    });
+                }else if (child is Polygon triangle)
+                {
+                    shapes.Add(new SerializableShape
+                    {
+                        ShapeType = "Triangle",
+                        X = Canvas.GetLeft(triangle),
+                        Y = Canvas.GetTop(triangle),
+                        FillColor = ((SolidColorBrush)triangle.Fill).Color.ToString(),
+                        StrokeColor = triangle.Stroke.ToString(),
+                        StrokeThickness = triangle.StrokeThickness,
+                        PointsCollection = triangle.Points,
+                    });
+                }
+            }
+
+            // Serialize to JSON
+            var json = JsonSerializer.Serialize(shapes, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(filePath, json);
+        }
+
+        // Method to load objects from JSON and restore them on the Canvas
+        private void LoadCanvasFromJson(string filePath)
+        {
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("File not found.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            // Clear existing objects
+            DrawingCanvas.Children.Clear();
+
+            // Deserialize JSON
+            var json = File.ReadAllText(filePath);
+            var shapes = JsonSerializer.Deserialize<List<SerializableShape>>(json);
+
+            foreach (var shape in shapes)
+            {
+                if (shape.ShapeType == "Rectangle")
+                {
+                    var rect = new Rectangle
+                    {
+                        Width = shape.Width,
+                        Height = shape.Height,
+                        Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(shape.FillColor)),
+                        Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString(shape.StrokeColor)),
+                        StrokeThickness = shape.StrokeThickness,
+                    };
+                    Canvas.SetLeft(rect, shape.X);
+                    Canvas.SetTop(rect, shape.Y);
+                    DrawingCanvas.Children.Add(rect);
+                }
+                else if (shape.ShapeType == "Ellipse")
+                {
+                    var ellipse = new Ellipse
+                    {
+                        Width = shape.Width,
+                        Height = shape.Height,
+                        Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(shape.FillColor)),
+                        Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString(shape.StrokeColor)),
+                        StrokeThickness = shape.StrokeThickness,
+                    };
+                    Canvas.SetLeft(ellipse, shape.X);
+                    Canvas.SetTop(ellipse, shape.Y);
+                    DrawingCanvas.Children.Add(ellipse);
+                }
+                else if (shape.ShapeType == "TextBox")
+                {
+                    var textBox = new TextBox
+                    {
+                        Width = shape.Width,
+                        Height= shape.Height,
+                        Text = shape.Text,
+                        FontSize = 12,
+                        TextAlignment = TextAlignment.Center,
+                        HorizontalAlignment = HorizontalAlignment.Center
+                    };
+                    Canvas.SetLeft(textBox, shape.X);
+                    Canvas.SetTop(textBox, shape.Y);
+                    DrawingCanvas.Children.Add(textBox);
+                }
+                else if (shape.ShapeType == "Triangle")
+                {
+                    Polygon triangle = new Polygon()
+                    {
+                        Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString(shape.StrokeColor)),
+                        Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(shape.FillColor)),
+                        StrokeThickness = shape.StrokeThickness,
+                        Points = new PointCollection(shape.PointsCollection),
+                    };
+                    Canvas.SetLeft(triangle, shape.X);
+                    Canvas.SetTop(triangle, shape.Y);
+                    DrawingCanvas.Children.Add(triangle);
+                }
+            }
         }
     }
 }

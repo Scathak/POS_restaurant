@@ -10,6 +10,9 @@
 
   <ItemGroup>
     <None Remove="DB connection.txt" />
+    <None Remove="Images\icon_16_16.ico" />
+    <None Remove="Images\icon_32_32.ico" />
+    <None Remove="Images\icon_3427.png" />
     <None Remove="Images\iMain02.jpg" />
     <None Remove="Images\iReport_01.jpg" />
   </ItemGroup>
@@ -22,6 +25,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\icon_16_16.ico" />
+    <Resource Include="Images\icon_32_32.ico" />
+    <Resource Include="Images\icon_3427.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\iMain02.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
