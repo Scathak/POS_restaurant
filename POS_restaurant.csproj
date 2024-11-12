@@ -10,11 +10,24 @@
 
   <ItemGroup>
     <None Remove="DB connection.txt" />
+    <None Remove="Images\iAccount_01.jpg" />
+    <None Remove="Images\iCoffee_01.jpg" />
     <None Remove="Images\icon_16_16.ico" />
     <None Remove="Images\icon_32_32.ico" />
     <None Remove="Images\icon_3427.png" />
+    <None Remove="Images\iExtraInv_01.jpg" />
+    <None Remove="Images\iFoodinv_01.jpg" />
+    <None Remove="Images\iGifts_01.jpg" />
+    <None Remove="Images\ilabour_01.jpg" />
+    <None Remove="Images\iLogout_01.jpg" />
+    <None Remove="Images\iMain01.jpg" />
     <None Remove="Images\iMain02.jpg" />
+    <None Remove="Images\imenu_01.jpg" />
+    <None Remove="Images\iPayments_01.jpg" />
     <None Remove="Images\iReport_01.jpg" />
+    <None Remove="Images\iSetup_01.jpg" />
+    <None Remove="Images\iTea_01.jpg" />
+    <None Remove="Images\Logo2.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,41 +38,61 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\icon_16_16.ico" />
-    <Resource Include="Images\icon_32_32.ico" />
+    <Resource Include="Images\iAccount_01.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\iCoffee_01.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\icon_16_16.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\icon_32_32.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\icon_3427.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\iExtraInv_01.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\iFoodinv_01.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\iGifts_01.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\ilabour_01.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\iLogout_01.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\iMain01.jpg" />
     <Resource Include="Images\iMain02.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\imenu_01.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\iPayments_01.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\iReport_01.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\iSetup_01.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\iTea_01.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Logo2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Images\iCoffee_01.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Images\iExtraInv_01.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Images\iFoodinv_01.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Images\iLogout_01.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Images\iPayments_01.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Images\iSetup_01.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Images\iTea_01.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="Images\Logo.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

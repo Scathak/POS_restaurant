@@ -4,7 +4,7 @@ using System.Windows.Controls;
 namespace POS_restaurant
 {
     /// <summary>
-    /// Interaction logic for UserControl2.xaml
+    /// Right side menu with buttons
     /// </summary>
     public partial class UserControl2 : UserControl
     {
@@ -81,9 +81,5 @@ namespace POS_restaurant
             loginLogoutWindow.Show();
             Window.GetWindow(this).Close();
         }
-        
-
-
-
     }
 }

@@ -4,7 +4,7 @@ using System.Windows.Threading;
 namespace POS_restaurant
 {
     /// <summary>
-    /// Interaction logic for UserControl1.xaml
+    /// Top status bar
     /// </summary>
     public partial class UserControl1 : UserControl
     {

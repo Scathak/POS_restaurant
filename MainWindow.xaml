@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:POS_restaurant"
         mc:Ignorable="d"
         Title="Main"  WindowState="Maximized" 
-        Icon="C:\_prog\pos\POS_restaurant\Images\icon_32_32.ico">
+        Icon="pack://application:,,,/Images/icon_32_32.ico">
     <Grid>
 
     </Grid>

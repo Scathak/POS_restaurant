@@ -53,6 +53,8 @@ namespace POS_restaurant
         private string _currentShape; // Stores the shape type being dragged
         private ScaleTransform _scaleTransform = new ScaleTransform(1.0, 1.0); // Initialize scale at 100%
         private const double ZoomStep = 0.1; // Amount to zoom in/out per step
+        private const double MaxZoom = 2.0; // Maximum zoom level
+        private const double MinZoom = 0.5; // Minimum zoom level
 
         public ObservableCollection<MainOperationsRecord> Collection { get; set; }
 
@@ -227,23 +229,27 @@ namespace POS_restaurant
         // Method to zoom in
         private void ZoomIn()
         {
-            _scaleTransform.ScaleX += ZoomStep;
-            _scaleTransform.ScaleY += ZoomStep;
+            if (_scaleTransform.ScaleX < MaxZoom && _scaleTransform.ScaleY < MaxZoom)
+            {
+                _scaleTransform.ScaleX += ZoomStep;
+                _scaleTransform.ScaleY += ZoomStep;
+            }
         }
 
         // Method to zoom out
         private void ZoomOut()
         {
-            // Prevent zooming out beyond 10% scale
-            if (_scaleTransform.ScaleX > ZoomStep && _scaleTransform.ScaleY > ZoomStep)
+            // Prevent zooming out beyond smallest scale
+            if (_scaleTransform.ScaleX > MinZoom && _scaleTransform.ScaleY > MinZoom)
             {
                 _scaleTransform.ScaleX -= ZoomStep;
                 _scaleTransform.ScaleY -= ZoomStep;
+                //ZoomRatio.Text = _scaleTransform.ScaleX.ToString();
             }
         }
 
         // Event handler for mouse wheel scroll
-        private void Window_MouseWheel(object sender, MouseWheelEventArgs e)
+        private void Canvas_MouseWheel(object sender, MouseWheelEventArgs e)
         {
             if (e.Delta > 0)
             {
@@ -423,6 +429,12 @@ namespace POS_restaurant
                     DrawingCanvas.Children.Add(triangle);
                 }
             }
+        }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Clear existing objects
+            DrawingCanvas.Children.Clear();
         }
     }
 }

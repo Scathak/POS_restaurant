@@ -22,9 +22,9 @@
             <Setter Property="Height" Value="80"/>
             <Setter Property="Width" Value="80"/>
         </Style>
-        
+
     </Window.Resources>
-    <Grid>
+    <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="auto"/>
@@ -38,13 +38,15 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        
+
         <local:UserControl1 x:Name="MainHeader" VerticalAlignment="Top"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"/>
-        <local:UserControl2 x:Name="MainMenu" HorizontalAlignment="Right" Grid.Row="1" Grid.RowSpan="3" Grid.Column="5"/>
+        <local:UserControl2 x:Name="MainMenu" HorizontalAlignment="Right" Grid.Row="1" Grid.RowSpan="4" Grid.Column="5"/>
+        <local:UserControl3 x:Name="EventsConveyer" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5"/>
 
         <!-- Left: DataGrid and scheme -->
-       
+
         <!-- Left: DataGrid with Operations -->
         <DataGrid x:Name="MainOperationDataGrid" Grid.Column="0" Grid.Row="1" AutoGenerateColumns="False">
             <DataGrid.Columns>
@@ -58,29 +60,39 @@
                 <DataGridTextColumn Header="Time" Width="auto" Binding="{Binding Time}" />
             </DataGrid.Columns>
         </DataGrid>
-            
+
         <GridSplitter Grid.Column="0" Grid.Row="2" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" ResizeDirection="Rows"/>
 
-        
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Column="0" Grid.Row="3">
+            <!-- Main drawing panel -->
+            <Canvas Grid.Column="0" Grid.Row="3" x:Name="DrawingCanvas" Background="LightGray" AllowDrop="True" 
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top" 
+                    MouseWheel="Canvas_MouseWheel" 
+                    Width="2000" Height="2000">
+            </Canvas>
+        </ScrollViewer>
+
         <!-- Left-side panel with buttons for shapes -->
-        <StackPanel Grid.Column="0" Grid.Row="3" Width="auto" HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Background="#f0f0f0">
+        <StackPanel Grid.Column="0" Grid.Row="3" Width="auto" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal" Background="#f0f0f0">
             <Button x:Name="TriangleButton" Content="Cassier" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightCoral" AllowDrop="False" />
             <Button x:Name="SquareButton" Content="Table" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightGreen" AllowDrop="False" />
             <Button x:Name="CircleButton" Content="Additional" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightBlue" AllowDrop="False" />
-            <!-- Zoom Control Buttons -->
-            <Button Content="+" Width="30" Height="30" FontSize="20" Click="ZoomInButton_Click"/>
-            <Button Content="-" Width="30" Height="30" FontSize="20" Click="ZoomOutButton_Click"/>
+            <Button x:Name="ClearButton" Content=" X " Width="auto" Height="30" FontSize="20" Margin="10" Click="ClearButton_Click"/>
         </StackPanel>
 
-        <!-- Main drawing panel -->
-        <Canvas Grid.Column="0" Grid.Row="3" x:Name="DrawingCanvas" Background="LightGray" AllowDrop="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,50">
-            
-        </Canvas>
-  
-      
-        
+        <!-- Zoom Control Buttons -->
+        <StackPanel Grid.Column="0" Grid.Row="3" Width="auto" HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal" Background="#f0f0f0" Margin="20">
+            <TextBlock x:Name="ZoomRatio" Text="1.0" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Margin="10"/>
+            <Button Content="+" Width="30" Height="30" FontSize="20" Margin="10" Click="ZoomInButton_Click"/>
+            <Button Content="-" Width="30" Height="30" FontSize="20" Margin="10" Click="ZoomOutButton_Click"/>
+        </StackPanel>
+
+
+
+
         <GridSplitter Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" Width="5" HorizontalAlignment="Left" VerticalAlignment="Stretch" ResizeDirection="Columns"/>
-        
+
         <!-- Center: Numeric Keypad and Buttons -->
         <StackPanel Grid.Column="2" Grid.Row="1">
             <TextBox x:Name="NumericTextBox" FontSize="35" Height="auto" TextAlignment="Left"
@@ -108,9 +120,9 @@
             </UniformGrid>
             <!-- More action buttons -->
         </StackPanel>
-        
+
         <GridSplitter Grid.Column="3" Grid.Row="1" Grid.RowSpan="3" Width="5" HorizontalAlignment="Left" VerticalAlignment="Stretch" ResizeDirection="Columns"/>
-        
+
         <!-- Right: Category and Items -->
         <StackPanel Grid.Column="4" Grid.Row="1">
             <UniformGrid>
@@ -125,13 +137,13 @@
         <StackPanel Grid.Column="4" Grid.Row="1" Orientation="Horizontal">
             <Button  Style="{StaticResource ProductsButtonStyle}">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Image Source="C:\_prog\pos\POS_restaurant\Images\iTea_01.jpg" Width="48" Height="48" Stretch="Uniform"/>
+                    <Image Source="pack://application:,,,/Images/iTea_01.jpg" Width="48" Height="48" Stretch="Uniform"/>
                     <TextBlock Text="Tea" TextWrapping="Wrap" TextAlignment="Center"/>
-                </StackPanel>                
+                </StackPanel>
             </Button>
             <Button Style="{StaticResource ProductsButtonStyle}" >
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Image Source="C:\_prog\pos\POS_restaurant\Images\iCoffee_01.jpg" Width="48" Height="48" Stretch="Uniform"/>
+                    <Image Source="pack://application:,,,/Images/iCoffee_01.jpg" Width="48" Height="48" Stretch="Uniform"/>
                     <TextBlock Text="Coffee" TextWrapping="Wrap" TextAlignment="Center"/>
                 </StackPanel>
             </Button>
