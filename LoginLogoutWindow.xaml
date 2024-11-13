@@ -1,9 +1,15 @@
 ﻿<Window x:Class="POS_restaurant.LoginLogoutWindow"
-       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Login/Logout"
-        WindowState="Maximized"
-        WindowStyle="None">
+        
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:POS_restaurant"
+        xmlns:sys="clr-namespace:System;assembly=netstandard"
+
+        mc:Ignorable="d"
+        Title="Login/Logout" WindowState="Maximized" WindowStyle="None">
+    
     <Window.Resources>
         <Style x:Key="GroupButtonStyle" TargetType="Button">
             <Setter Property="FontSize" Value="40"/>
@@ -19,23 +25,9 @@
         <!-- Date and Time in the top right corner -->
         <TextBlock x:Name="CurrentDateTime" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" FontSize="20" Foreground="#FFD700" Text="{Binding DateTime}" />
 
-        <!-- Login section -->
+        <!-- Login section: numeric pad -->
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <PasswordBox x:Name="LoginTextBox" Width="240" Height="80" FontSize="40" AutomationProperties.HelpText="Enter PIN" />
-            <UniformGrid Rows="4" Columns="3" Margin="20" Opacity="0.7">
-                <Button Content="1" Style="{StaticResource GroupButtonStyle}" Click="Button_Click_1"/>
-                <Button Content="2" Style="{StaticResource GroupButtonStyle}" />
-                <Button Content="3" Style="{StaticResource GroupButtonStyle}" />
-                <Button Content="4" Style="{StaticResource GroupButtonStyle}" />
-                <Button Content="5" Style="{StaticResource GroupButtonStyle}" />
-                <Button Content="6" Style="{StaticResource GroupButtonStyle}" />
-                <Button Content="7" Style="{StaticResource GroupButtonStyle}" />
-                <Button Content="8" Style="{StaticResource GroupButtonStyle}" />
-                <Button Content="9" Style="{StaticResource GroupButtonStyle}" />
-                <Button Content="Clear" FontSize="20"/>
-                <Button Content="0" Style="{StaticResource GroupButtonStyle}" />
-                <Button Content="Login" FontSize="24"  Click="Button_Click"/>
-            </UniformGrid>
+            <local:UserControl4 x:Name="NumericButtons" VerticalAlignment="Top" />
         </StackPanel>
     </Grid>
 </Window>

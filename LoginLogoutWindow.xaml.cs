@@ -24,47 +24,39 @@ namespace POS_restaurant
         public LoginLogoutWindow()
         {
             InitializeComponent();
+            
+            InitTimeDate();
 
+            // Event listerner for a numeric pad
+            NumericButtons.FunctionButtonClicked += NumericButtons_FunctionButtonClicked;
+        }
+        private void InitTimeDate()
+        {
+            // Set time on the screen first time
+            CurrentDateTime.Text = DateTime.Now.ToString("dd MMM yyyy HH:mm:ss");
             // Start timer to update the clock
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += (s, e) => CurrentDateTime.Text = DateTime.Now.ToString("dd MMM yyyy HH:mm:ss");
             timer.Start();
         }
-        private void KeyCommand(object sender, RoutedEventArgs e)
+        private void NumericButtons_FunctionButtonClicked(object sender, string buttonContent)
         {
-            var key = (sender as Button).Content.ToString();
-            //LoginTextBox.Text += key;
-        }
-        // Event handler for restricting input to numeric only
-        private void PasswordTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            // Regular expression to allow only numeric input (digits only)
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text); // If non-numeric, set Handled to true to prevent input
-        }
-        private void ClearCommand(object sender, RoutedEventArgs e)
-        {
-            //LoginTextBox.Text = string.Empty;
-        }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            // Logic for logging in
-            MainOperations MainOperations = new MainOperations();
-            MainOperations.Show();
-            this.Close();
+            switch (buttonContent)
+            {
+                case "Enter":
+                    LoginCommand(sender, null);
+                    break;
+                default:
+                    MessageBox.Show($"Unhandled function: {buttonContent}");
+                    break;
+            }
         }
         private void LoginCommand(object sender, RoutedEventArgs e)
         {
-            // Add authentication logic here
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(System.Reflection.Assembly.GetExecutingAssembly().GetName().Name);
+            var loginLogoutWindow = new MainOperationsWindow();
+            loginLogoutWindow.Show();
+            Window.GetWindow(this).Close();
         }
     }
 }

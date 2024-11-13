@@ -15,7 +15,7 @@ namespace POS_restaurant
         // Navigation button click event handlers
         private void MainButton_Click(object sender, RoutedEventArgs e)
         {
-            var mainWindow = new MainOperations();
+            var mainWindow = new MainOperationsWindow();
             mainWindow.Show();
             Window.GetWindow(this).Close();
         }

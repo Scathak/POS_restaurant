@@ -11,6 +11,12 @@ namespace POS_restaurant
         public UserControl1()
         {
             InitializeComponent();
+            InitDateTime();
+        }
+        private void InitDateTime()
+        {
+            // Initial set
+            DateTimeTextBlock.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             // Start the timer to update date and time every second
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
@@ -23,6 +29,7 @@ namespace POS_restaurant
             DateTimeTextBlock.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
         }
 
+        
         // Method to set the window name
         public void SetWindowName(string windowName)
         {

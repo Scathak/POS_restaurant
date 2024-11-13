@@ -12,7 +12,7 @@ using System.IO;
 namespace POS_restaurant
 {
     /// <summary>
-    /// Interaction logic for MainOperations.xaml
+    /// Interaction logic for MainOperationsWindow.xaml
     /// </summary>
     public class SerializableShape
     {
@@ -48,7 +48,7 @@ namespace POS_restaurant
         public string Time { get; set; }
     }
 
-    public partial class MainOperations : Window
+    public partial class MainOperationsWindow : Window
     {
         private string _currentShape; // Stores the shape type being dragged
         private ScaleTransform _scaleTransform = new ScaleTransform(1.0, 1.0); // Initialize scale at 100%
@@ -58,11 +58,12 @@ namespace POS_restaurant
 
         public ObservableCollection<MainOperationsRecord> Collection { get; set; }
 
-        public MainOperations()
+        public MainOperationsWindow()
         {
             InitializeComponent();
             MainHeader.SetWindowName("1. Main Operations");
-            NumericTextBox.Focus(); // Set initial focus to the NumericTextBox
+
+            //NumericTextBox.Focus(); // Set initial focus to the NumericTextBox
 
             CircleButton.MouseMove += Shape_MouseMove;
             SquareButton.MouseMove += Shape_MouseMove;
@@ -84,13 +85,22 @@ namespace POS_restaurant
             Collection.Add(new MainOperationsRecord() { OperationNumber = 9, Name = "Coffee", Price = 50, Quantity = 1, Total = 50, Table = 3, Date = "11/6/2024", Time = "19:05" }); 
             Collection.Add(new MainOperationsRecord() { OperationNumber = 10, Name = "Coffee", Price = 50, Quantity = 1, Total = 50, Table = 5, Date = "11/6/2024", Time = "19:28" });
             MainOperationDataGrid.ItemsSource = Collection;
+
+            // Event listerner for a numeric pad
+            NumericButtons.FunctionButtonClicked += NumericButtons_FunctionButtonClicked;
         }
-        // Event handler for restricting input to numeric only
-        private void NumericTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+
+        private void NumericButtons_FunctionButtonClicked(object sender, string buttonContent)
         {
-            // Regular expression to allow only numeric input (digits only)
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text); // If non-numeric, set Handled to true to prevent input
+            switch (buttonContent)
+            {
+                case "Enter":
+                    MessageBox.Show($"Main function: {buttonContent}");
+                    break;
+                default:
+                    MessageBox.Show($"Unhandled function: {buttonContent}");
+                    break;
+            }
         }
         // Handles the dragging of shapes from the buttons
         private void Shape_MouseMove(object sender, MouseEventArgs e)
@@ -192,40 +202,7 @@ namespace POS_restaurant
             };
             return triangle;
         }
-        private void NumericKeysDeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            int cursorPosition = NumericTextBox.CaretIndex;
 
-            if (cursorPosition > 0) // Ensure there's a character before the cursor to delete
-            {
-                // Remove the character before the cursor position
-                NumericTextBox.Text = NumericTextBox.Text.Remove(cursorPosition - 1, 1);
-                NumericTextBox.CaretIndex = cursorPosition - 1; // Move the cursor back one position
-            }
-        }
-        private void NumericKeysEnterButton_Click(object sender, RoutedEventArgs e)
-        {
-            NumericTextBox.Text = "";
-        }
-        private void NumericKeysButton_Click(object sender, RoutedEventArgs e)
-        {
-            var key = (sender as Button).Content.ToString();
-            int caretIndex = NumericTextBox.CaretIndex;
-            // Insert the new digit at the current caret position
-            NumericTextBox.Text = NumericTextBox.Text.Insert(caretIndex, key);
-            // Update the caret position to be after the inserted digit
-            NumericTextBox.CaretIndex = caretIndex + 1;
-        }
-        // Event handler to return focus to NumericTextBox after a button is clicked
-        private void Button_GotFocus(object sender, RoutedEventArgs e)
-        {
-            NumericTextBox.Focus();
-        }
-
-        // Set the cursor to the end of the text when the NumericTextBox regains focus
-        private void NumericTextBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-        }
         // Method to zoom in
         private void ZoomIn()
         {
