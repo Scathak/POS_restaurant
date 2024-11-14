@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <None Remove="DB connection.txt" />
+    <None Remove="Images\Desserts01.jpg" />
+    <None Remove="Images\Drinks02.jpg" />
     <None Remove="Images\iAccount_01.jpg" />
     <None Remove="Images\iCoffee_01.jpg" />
     <None Remove="Images\icon_16_16.ico" />
@@ -27,6 +29,7 @@
     <None Remove="Images\iReport_01.jpg" />
     <None Remove="Images\iSetup_01.jpg" />
     <None Remove="Images\iTea_01.jpg" />
+    <None Remove="Images\kahvalti01.jpg" />
     <None Remove="Images\Logo2.jpg" />
   </ItemGroup>
 
@@ -38,6 +41,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\Desserts01.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Drinks02.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\iAccount_01.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -85,6 +94,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\iTea_01.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\kahvalti01.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Logo2.jpg">
