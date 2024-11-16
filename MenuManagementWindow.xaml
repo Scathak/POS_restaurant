@@ -17,16 +17,18 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <local:UserControl1 x:Name="MainHeader" VerticalAlignment="Top" Grid.Row="0" Grid.ColumnSpan="2"/>
-        <local:UserControl2 x:Name="MainMenu" HorizontalAlignment="Right"  Grid.Row="1" Grid.Column="3" Grid.RowSpan="2"/>
-        <DataGrid AutoGenerateColumns="False" Grid.Row="1">
+        <local:UserControl2 x:Name="MainMenu" HorizontalAlignment="Right"  Grid.Row="1" Grid.Column="3" Grid.RowSpan="3"/>
+        <DataGrid x:Name="MenuManagementDataGrid" AutoGenerateColumns="False" Grid.Row="1">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Category" Width="*"/>
-                <DataGridTextColumn Header="Name" Width="*"/>
-                <DataGridTextColumn Header="Ingredients with Weight" Width="*"/>
-                <DataGridTextColumn Header="Production Cost" Width="*"/>
-                <DataGridTextColumn Header="Retail Price" Width="*"/>
+                <DataGridTextColumn Header="Number" Width="auto" Binding="{Binding Number}"/>
+                <DataGridTextColumn Header="Name" Width="auto" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Ingredients with Weight" Width="auto" Binding="{Binding IngredientsWithWeight}"/>
+                <DataGridTextColumn Header="Production Cost" Width="auto" Binding="{Binding ProductionCost}"/>
+                <DataGridTextColumn Header="Retail Price" Width="auto" Binding="{Binding RetailPrice}"/>
+                <DataGridTextColumn Header="Category" Width="auto" Binding="{Binding Category}"/>
             </DataGrid.Columns>
         </DataGrid>
         <!-- Add buttons for Add, Delete, Edit at the bottom -->
@@ -39,5 +41,11 @@
             <Button Content="Send price Tag" Width="auto" Height="50" Margin="10"/>
 
         </StackPanel>
+        <DataGrid x:Name="MenuCategoriesDataGrid" AutoGenerateColumns="False" Grid.Row="3" Width="auto">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Number" Width="auto" Binding="{Binding Number}"/>
+                <DataGridTextColumn Header="Category" Width="auto" Binding="{Binding Category}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
