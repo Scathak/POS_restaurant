@@ -103,32 +103,7 @@
         </DataGrid>
 
         <GridSplitter Grid.Column="0" Grid.Row="2" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" ResizeDirection="Rows"/>
-
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Column="0" Grid.Row="3">
-            <!-- Main drawing panel -->
-            <Canvas Grid.Column="0" Grid.Row="3" x:Name="DrawingCanvas" Background="LightGray" AllowDrop="True" 
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top" 
-                    MouseWheel="Canvas_MouseWheel" 
-                    Width="2000" Height="2000">
-            </Canvas>
-        </ScrollViewer>
-
-        <!-- Left-side panel with buttons for shapes -->
-        <StackPanel Grid.Column="0" Grid.Row="3" Width="auto" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal" Background="#f0f0f0">
-            <Button x:Name="TriangleButton" Content="Cassier" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightCoral" AllowDrop="False" />
-            <Button x:Name="SquareButton" Content="Table" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightGreen" AllowDrop="False" />
-            <Button x:Name="CircleButton" Content="Additional" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightBlue" AllowDrop="False" />
-            <Button x:Name="ClearButton" Content=" X " Width="auto" Height="30" FontSize="20" Margin="10" Click="ClearButton_Click"/>
-        </StackPanel>
-
-        <!-- Zoom Control Buttons -->
-        <StackPanel Grid.Column="0" Grid.Row="3" Width="auto" HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal" Background="#f0f0f0" Margin="20">
-            <TextBlock x:Name="ZoomRatio" Text="1.0" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Margin="10"/>
-            <Button Content="+" Width="30" Height="30" FontSize="20" Margin="10" Click="ZoomInButton_Click"/>
-            <Button Content="-" Width="30" Height="30" FontSize="20" Margin="10" Click="ZoomOutButton_Click"/>
-        </StackPanel>
-
+        <local:UserControl5 x:Name="Canvas" VerticalAlignment="Top" Grid.Column="0" Grid.Row="3"/>
         <GridSplitter Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" Width="5" HorizontalAlignment="Left" VerticalAlignment="Stretch" ResizeDirection="Columns"/>
 
         <!-- Center: Numeric Keypad and Buttons -->

@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="POS_restaurant.UserControl5"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS_restaurant"
+             mc:Ignorable="d" 
+             >
+    <Grid>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Column="0" Grid.Row="3">
+            <!-- Main drawing panel -->
+            <Canvas Grid.Column="0" Grid.Row="3" x:Name="DrawingCanvas" Background="LightGray" AllowDrop="True" 
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top" 
+                    MouseWheel="Canvas_MouseWheel" 
+                    Width="2000" Height="2000">
+            </Canvas>
+        </ScrollViewer>
+
+        <!-- Left-side panel with buttons for shapes -->
+        <StackPanel Grid.Column="0" Grid.Row="3" Width="auto" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal" Background="#f0f0f0">
+            <Button x:Name="TriangleButton" Content="Cassier" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightCoral" AllowDrop="False" />
+            <Button x:Name="SquareButton" Content="Table" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightGreen" AllowDrop="False" />
+            <Button x:Name="CircleButton" Content="Additional" Width="auto" Height="30" FontSize="20" Margin="10" Background="LightBlue" AllowDrop="False" />
+            <Button x:Name="ClearButton" Content=" X " Width="auto" Height="30" FontSize="20" Margin="10" Click="ClearButton_Click"/>
+        </StackPanel>
+
+        <!-- Zoom Control Buttons -->
+        <StackPanel Grid.Column="0" Grid.Row="3" Width="auto" HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal" Background="#f0f0f0" Margin="20">
+            <TextBlock x:Name="ZoomRatio" Text="1.0" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Margin="10"/>
+            <Button Content="+" Width="30" Height="30" FontSize="20" Margin="10" Click="ZoomInButton_Click"/>
+            <Button Content="-" Width="30" Height="30" FontSize="20" Margin="10" Click="ZoomOutButton_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
