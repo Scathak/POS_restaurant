@@ -19,12 +19,13 @@
         </Grid.RowDefinitions>
         <local:UserControl1 x:Name="MainHeader" VerticalAlignment="Top" Grid.Row="0" Grid.ColumnSpan="2"/>
         <local:UserControl2 x:Name="MainMenu" HorizontalAlignment="Right"  Grid.Row="1" Grid.Column="3"/>
-        <DataGrid AutoGenerateColumns="False" Grid.Row="1">
+        <DataGrid x:Name="ProductsInventoryDataGrid" AutoGenerateColumns="False" Grid.Row="1">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Number" Width="*"/>
-                <DataGridTextColumn Header="Name" Width="*"/>
-                <DataGridTextColumn Header="Amount" Width="*"/>
-                <DataGridTextColumn Header="Price" Width="*"/>
+                <DataGridTextColumn Header="Number" Width="auto" Binding="{Binding Number}"/>
+                <DataGridTextColumn Header="Name" Width="auto" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Amount" Width="auto" Binding="{Binding Amount}"/>
+                <DataGridTextColumn Header="Price" Width="auto" Binding="{Binding Price}"/>
+                <DataGridTextColumn Header="Currency" Width="auto" Binding="{Binding Currency}"/>                
             </DataGrid.Columns>
         </DataGrid>
         <!-- Add buttons for Add, Delete, Edit at the bottom -->
