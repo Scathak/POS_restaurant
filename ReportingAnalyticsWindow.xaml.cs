@@ -13,9 +13,6 @@ namespace POS_restaurant
             InitializeComponent();
             MainHeader.SetWindowName("10. Reporting and analytics");
         }
-        private void AnalyticalPanel_Click(object sender, MouseButtonEventArgs e)
-        {
-            MessageBox.Show("Widget clicked: Showing details about Sales Data Analysis.");
-        }
+
     }
 }
