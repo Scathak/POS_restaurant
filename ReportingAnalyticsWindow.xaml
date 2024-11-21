@@ -22,7 +22,7 @@
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top">
             <local:UserControl6 x:Name="SalesAnalytics" />
             <local:UserControl6 x:Name="InventoryAnalytics" />
-            <local:UserControl6 x:Name="Analytics1" />
+            <local:UserControl6 x:Name="CustomerAmountByTime" />
             <local:UserControl6 x:Name="Analytics2" />
             <local:UserControl6 x:Name="Analytics3" />
             <local:UserControl6 x:Name="Analytics4" />

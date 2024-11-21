@@ -22,19 +22,22 @@ namespace POS_restaurant
         public string Email { get; set; }
         public string ShiftDates { get; set; } // Comma-separated list of shift dates
     }
+    
+
     public partial class labourManagementWindow : Window
     {
         // Define the list of dates and their associated colors
         private Dictionary<DateTime, Brush> coloredDates = new Dictionary<DateTime, Brush>
         {
-            { new DateTime(2024, 10, 15), Brushes.LightBlue },
-            { new DateTime(2024, 10, 20), Brushes.LightGreen },
-            { new DateTime(2024, 10, 25), Brushes.LightPink }
+            { new DateTime(2024, 11, 15), Brushes.LightBlue },
+            { new DateTime(2024, 11, 20), Brushes.LightGreen },
+            { new DateTime(2024, 11, 25), Brushes.LightPink }
         };
         
         private LabourContext _dbContext;
         private readonly string _databasePath;
         private static labourManagementWindow _instance;
+        private int[] CurrentMonthAssignments = new int[31]; // Array to store daily assignments for the current month
 
         public labourManagementWindow()
         {
@@ -99,9 +102,68 @@ namespace POS_restaurant
         // Handles the calendar loaded event
         private void Calendar_Loaded(object sender, RoutedEventArgs e)
         {
-            ColorCalendarDates();
+            CalculateAssignments();
+            ColorCalendarDates();   
+        }
+        // Calculate daily assignments for the current month
+        private void CalculateAssignments()
+        {
+            Array.Clear(CurrentMonthAssignments, 0, CurrentMonthAssignments.Length); // Reset array
+
+            foreach (var item in LabourDataGrid.Items)
+            {
+                /*
+                var shifts = item.ListOfShifts?.Split(',') ?? Array.Empty<string>();
+                foreach (var shift in shifts)
+                {
+                    if (DateTime.TryParse(shift, out var date))
+                    {
+                        // Check if the date is within the current month
+                        if (date.Month == DateTime.Now.Month && date.Year == DateTime.Now.Year)
+                        {
+                            CurrentMonthAssignments[date.Day - 1]++;
+                        }
+                    }
+                }*/
+            }
+        }
+        // Apply colors to the calendar dates
+        private void ColorCalendarDates()
+        {
+            // Retrieve the threshold value
+            if (!int.TryParse(NumericTextBox.Text, out int threshold))
+            {
+                MessageBox.Show("Please enter a valid threshold.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            // Get CalendarDayButton elements
+            foreach (var child in FindVisualChildren<CalendarDayButton>(ColorCalendar))
+            {
+                if (child.DataContext is DateTime date)
+                {
+                    if (date.Month == DateTime.Now.Month && date.Year == DateTime.Now.Year)
+                    {
+                        int assignments = CurrentMonthAssignments[date.Day - 1];
+
+                        if (assignments == 0)
+                        {
+                            child.Background = Brushes.LightPink; // No assignments
+                        }
+                        else if (assignments < threshold)
+                        {
+                            child.Background = Brushes.LightBlue; // Below threshold
+                        }
+                        else
+                        {
+                            child.Background = Brushes.LightGreen; // Meets or exceeds threshold
+                        }
+                    }
+                }
+            }
         }
         // Method to color specific dates in the Calendar
+        /*
         private void ColorCalendarDates()
         {
             // Get the Calendar's CalendarDayButton elements
@@ -116,7 +178,7 @@ namespace POS_restaurant
                     }
                 }
             }
-        }
+        }*/
 
         // Helper method to find visual children of a specific type
         private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
@@ -137,6 +199,12 @@ namespace POS_restaurant
                     }
                 }
             }
+        }
+        // Sample data class for LabourDataGrid
+        public class EmployeeData
+        {
+            public string EmployeeName { get; set; }
+            public string ListOfShifts { get; set; } // Comma-separated list of shift dates
         }
         private void KeyButton_Click(object sender, RoutedEventArgs e)
         {
