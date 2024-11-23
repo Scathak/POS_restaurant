@@ -19,5 +19,21 @@
         </Grid.RowDefinitions>
         <local:UserControl1 x:Name="MainHeader" VerticalAlignment="Top" Grid.Row="0" Grid.ColumnSpan="2"/>
         <local:UserControl2 x:Name="MainMenu" HorizontalAlignment="Right"  Grid.Row="1" Grid.Column="3"/>
+        <DataGrid x:Name="AccountingGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Code" Width="auto" Binding="{Binding Code}"/>
+                <DataGridTextColumn Header="Date" Width="auto" Binding="{Binding Date}"/>
+                <DataGridTextColumn Header="Rent, loans, or mortgage payments" Width="auto" Binding="{Binding Rent}"/>
+                <DataGridTextColumn Header="Food and drink ingredients" Width="auto" Binding="{Binding Ingredients}"/>
+                <DataGridTextColumn Header="Labor costs" Width="auto" Binding="{Binding Labor}"/>
+                <DataGridTextColumn Header="Supplies" Width="auto" Binding="{Binding Supplies}"/>
+                <DataGridTextColumn Header="Utilities" Width="auto" Binding="{Binding Utilities}"/>
+                <DataGridTextColumn Header="Marketing and advertisement expenses" Width="auto" Binding="{Binding Marketing}"/>
+                <DataGridTextColumn Header="Maintenance and repairs" Width="auto" Binding="{Binding Maintenance}"/>
+                <DataGridTextColumn Header="Insurance premiums" Width="auto" Binding="{Binding Insurance}"/>
+                <DataGridTextColumn Header="Licensing and permits" Width="auto" Binding="{Binding Licensing}"/>
+                <DataGridTextColumn Header="Debt servicing" Width="auto" Binding="{Binding Debt}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
