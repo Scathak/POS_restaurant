@@ -54,9 +54,12 @@ namespace POS_restaurant
         }
         private void LoginCommand(object sender, RoutedEventArgs e)
         {
-            var loginLogoutWindow = new MainOperationsWindow();
-            loginLogoutWindow.Show();
-            Window.GetWindow(this).Close();
+            if (NumericButtons.NumericTextBox.Text == "0000")
+            {
+                var loginLogoutWindow = new MainOperationsWindow();
+                loginLogoutWindow.Show();
+                Window.GetWindow(this).Close();
+            }
         }
     }
 }
