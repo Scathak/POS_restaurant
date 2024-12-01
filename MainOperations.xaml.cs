@@ -1,13 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
-using System.Text.RegularExpressions;
+using System.Globalization;
 using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Shapes;
-using System.Text.Json;
-using System.IO;
 
 namespace POS_restaurant
 {
@@ -35,6 +32,29 @@ namespace POS_restaurant
         public SerializableShape() { }
     }
 
+    /// <summary>
+    /// Represents the different types of payment methods.
+    /// </summary>
+    public enum PaymentTypes
+    {
+        Cash,
+        BankCard,
+        MoneyTransfer,
+        ForeignCurrency,
+        DeferredPayment,
+        CryptoCurrency,
+        Paid,
+    }
+    public class DeliverySpecification
+    {
+        public string Address;
+        public int Weight;
+        public string StartTime;
+        public string EndTime;
+        public string Contactnumber;
+        public PaymentTypes PaymentType;
+        public string Notes;
+    }
     public class MainOperationsRecord
     {
         [Key]
@@ -46,8 +66,20 @@ namespace POS_restaurant
         public int Table { get; set; }
         public string Date { get; set; }
         public string Time { get; set; }
+        public DeliverySpecification? Delivery { get; set; }
     }
+    public class NullToVisibilityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value == null ? Visibility.Collapsed : Visibility.Visible;
+        }
 
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
     public partial class MainOperationsWindow : Window
     {
         public ObservableCollection<MainOperationsRecord> Collection { get; set; }
@@ -60,16 +92,17 @@ namespace POS_restaurant
             //NumericTextBox.Focus(); // Set initial focus to the NumericTextBox
 
             Collection = new ObservableCollection<MainOperationsRecord>();
-            Collection.Add(new MainOperationsRecord() { OperationNumber = 1, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "14:20" });
-            Collection.Add(new MainOperationsRecord() { OperationNumber = 2, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 2, Date = "11/6/2024", Time = "15:10" });
-            Collection.Add(new MainOperationsRecord() { OperationNumber = 3, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 3, Date = "11/6/2024", Time = "15:50" });
-            Collection.Add(new MainOperationsRecord() { OperationNumber = 4, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 2, Date = "11/6/2024", Time = "16:30" });
-            Collection.Add(new MainOperationsRecord() { OperationNumber = 5, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 4, Date = "11/6/2024", Time = "16:45" });
-            Collection.Add(new MainOperationsRecord() { OperationNumber = 6, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 5, Date = "11/6/2024", Time = "17:24" });
-            Collection.Add(new MainOperationsRecord() { OperationNumber = 7, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "17:51" });
-            Collection.Add(new MainOperationsRecord() { OperationNumber = 8, Name = "Ice cream", Price = 80, Quantity = 1, Total = 80, Table = 2, Date = "11/6/2024", Time = "18:42" });
-            Collection.Add(new MainOperationsRecord() { OperationNumber = 9, Name = "Coffee", Price = 50, Quantity = 1, Total = 50, Table = 3, Date = "11/6/2024", Time = "19:05" }); 
-            Collection.Add(new MainOperationsRecord() { OperationNumber = 10, Name = "Coffee", Price = 50, Quantity = 1, Total = 50, Table = 5, Date = "11/6/2024", Time = "19:28" });
+            Collection.Add(new MainOperationsRecord() { OperationNumber = 1, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "14:20", Delivery = new DeliverySpecification { Address = "123 Ocean Drive", Weight = 5, StartTime = "18:30", EndTime = "19:00", Contactnumber = "555-1234", PaymentType = PaymentTypes.BankCard, Notes = "Please take POS terminal." } });
+            Collection.Add(new MainOperationsRecord() { OperationNumber = 2, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "15:10", Delivery = new DeliverySpecification { Address = "123 Ocean Drive", Weight = 5, StartTime = "18:30", EndTime = "19:00", Contactnumber = "555-1234", PaymentType = PaymentTypes.Cash, Notes = "Please take exchange." } });
+            Collection.Add(new MainOperationsRecord() { OperationNumber = 3, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "15:50", Delivery = new DeliverySpecification { Address = "123 Ocean Drive", Weight = 5, StartTime = "18:30", EndTime = "19:00", Contactnumber = "555-1234", PaymentType = PaymentTypes.DeferredPayment, Notes = "Pay tomorrow." } });
+            Collection.Add(new MainOperationsRecord() { OperationNumber = 4, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "16:30", Delivery = new DeliverySpecification { Address = "123 Ocean Drive", Weight = 5, StartTime = "18:30", EndTime = "19:00", Contactnumber = "555-1234", PaymentType = PaymentTypes.MoneyTransfer, Notes = "Please include extra napkins." } });
+            Collection.Add(new MainOperationsRecord() { OperationNumber = 5, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "16:30", Delivery = null });
+            Collection.Add(new MainOperationsRecord() { OperationNumber = 6, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "16:45", Delivery = null });
+            Collection.Add(new MainOperationsRecord() { OperationNumber = 7, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "17:24", Delivery = null });
+            Collection.Add(new MainOperationsRecord() { OperationNumber = 8, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "17:51", Delivery = null });
+            Collection.Add(new MainOperationsRecord() { OperationNumber = 9, Name = "Coffee", Price = 50, Quantity = 1, Total = 50, Table = 3, Date = "11/6/2024", Time = "19:05", Delivery = null });
+            Collection.Add(new MainOperationsRecord() { OperationNumber = 9, Name = "Coffee", Price = 50, Quantity = 1, Total = 50, Table = 3, Date = "11/6/2024", Time = "19:05", Delivery = null }); 
+            Collection.Add(new MainOperationsRecord() { OperationNumber = 10, Name = "Coffee", Price = 50, Quantity = 1, Total = 50, Table = 5, Date = "11/6/2024", Time = "19:28", Delivery = null });
             MainOperationDataGrid.ItemsSource = Collection;
 
             // Event listerner for a numeric pad

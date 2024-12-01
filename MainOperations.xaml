@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:POS_restaurant"
         xmlns:sys="clr-namespace:System;assembly=netstandard"
-        
         mc:Ignorable="d"
         Title="MainOperations" WindowState="Maximized" WindowStyle="None">
     <Window.Resources>
+        <local:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
         <Style x:Key="GroupButtonStyle" TargetType="Button">
             <Setter Property="FontSize" Value="40"/>
             <Setter Property="Height" Value="80"/>
@@ -91,14 +91,34 @@
         <!-- Left: DataGrid with Operations -->
         <DataGrid x:Name="MainOperationDataGrid" Grid.Column="0" Grid.Row="1" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Number" Width="auto" Binding="{Binding OperationNumber}"/>
-                <DataGridTextColumn Header="Name" Width="auto" Binding="{Binding Name}" />
-                <DataGridTextColumn Header="Price" Width="auto" Binding="{Binding Price}" />
-                <DataGridTextColumn Header="Quantity" Width="auto" Binding="{Binding Quantity}" />
-                <DataGridTextColumn Header="Total" Width="auto" Binding="{Binding Total}" />
-                <DataGridTextColumn Header="Table number" Width="auto" Binding="{Binding Table}" />
-                <DataGridTextColumn Header="Date" Width="auto" Binding="{Binding Date}" />
-                <DataGridTextColumn Header="Time" Width="auto" Binding="{Binding Time}" />
+                <DataGridTextColumn Header="Operation Number" Binding="{Binding OperationNumber}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding Price, StringFormat=C}"/>
+                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
+                <DataGridTextColumn Header="Total" Binding="{Binding Total, StringFormat=C}"/>
+                <DataGridTextColumn Header="Table" Binding="{Binding Table}"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
+                <DataGridTextColumn Header="Time" Binding="{Binding Time}"/>
+
+                <!-- Expanding DeliverySpecification -->
+                <DataGridTemplateColumn Header="Delivery">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Expander Header="Delivery Details" IsExpanded="False"
+                                      Visibility="{Binding Delivery, Converter={StaticResource NullToVisibilityConverter}}">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Delivery.Address}" Margin="5,2" TextWrapping="Wrap"/>
+                                    <TextBlock Text="Weight: {Binding Delivery.Weight}" Margin="5,2"/>
+                                    <TextBlock Text="Start Time: {Binding Delivery.StartTime}" Margin="5,2"/>
+                                    <TextBlock Text="End Time: {Binding Delivery.EndTime}" Margin="5,2"/>
+                                    <TextBlock Text="Contact: {Binding Delivery.Contactnumber}" Margin="5,2"/>
+                                    <TextBlock Text="Payment Type: {Binding Delivery.PaymentType}" Margin="5,2"/>
+                                    <TextBlock Text="Notes: {Binding Delivery.Notes}" Margin="5,2" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Expander>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 
