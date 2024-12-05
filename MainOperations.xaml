@@ -130,7 +130,7 @@
         <StackPanel Grid.Column="2" Grid.Row="1">
             <!-- Numeric pad -->
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <local:UserControl4 x:Name="NumericButtons" VerticalAlignment="Top" />
+                <local:UserControl4 x:Name="NumericButtons" VerticalAlignment="Top" Transparency="1.0"/>
             </StackPanel>
             <UniformGrid>
                 <Button Content="Add" Style="{StaticResource GroupButtonStyleActions}"/>

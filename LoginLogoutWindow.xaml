@@ -27,7 +27,7 @@
 
         <!-- Login section: numeric pad -->
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <local:UserControl4 x:Name="NumericButtons" VerticalAlignment="Top" />
+            <local:UserControl4 x:Name="NumericButtons" VerticalAlignment="Top" Transparency="0.8" />
         </StackPanel>
     </Grid>
 </Window>

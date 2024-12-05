@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace POS_restaurant
 {
@@ -24,6 +13,20 @@ namespace POS_restaurant
         // Define a custom event that passes the button content to the parent window
         public event EventHandler<string> FunctionButtonClicked;
 
+        // Define a Dependency Property for Transparency
+        public static readonly DependencyProperty TransparencyProperty =
+            DependencyProperty.Register(
+                nameof(Transparency),
+                typeof(double),
+                typeof(UserControl4),
+                new PropertyMetadata(1.0, OnTransparencyChanged));
+        
+        // CLR Property Wrapper for Transparency
+        public double Transparency
+        {
+            get => (double)GetValue(TransparencyProperty);
+            set => SetValue(TransparencyProperty, value);
+        }
         public UserControl4()
         {
             InitializeComponent();
@@ -69,6 +72,16 @@ namespace POS_restaurant
         private void Button_GotFocus(object sender, RoutedEventArgs e)
         {
             NumericTextBox.Focus();
+        }
+
+        // Callback for Transparency changes
+        private static void OnTransparencyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is UserControl4 control)
+            {
+                double newTransparency = (double)e.NewValue;
+                control.NumericKeypad.Opacity = newTransparency;
+            }
         }
     }
 }
