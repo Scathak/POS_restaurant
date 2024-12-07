@@ -108,12 +108,12 @@
                                       Visibility="{Binding Delivery, Converter={StaticResource NullToVisibilityConverter}}">
                                 <StackPanel>
                                     <TextBlock Text="{Binding Delivery.Address}" Margin="5,2" TextWrapping="Wrap"/>
-                                    <TextBlock Text="Weight: {Binding Delivery.Weight}" Margin="5,2"/>
-                                    <TextBlock Text="Start Time: {Binding Delivery.StartTime}" Margin="5,2"/>
-                                    <TextBlock Text="End Time: {Binding Delivery.EndTime}" Margin="5,2"/>
-                                    <TextBlock Text="Contact: {Binding Delivery.Contactnumber}" Margin="5,2"/>
-                                    <TextBlock Text="Payment Type: {Binding Delivery.PaymentType}" Margin="5,2"/>
-                                    <TextBlock Text="Notes: {Binding Delivery.Notes}" Margin="5,2" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding Delivery.Weight}" Margin="5,2"/>
+                                    <TextBlock Text="{Binding Delivery.StartTime}" Margin="5,2"/>
+                                    <TextBlock Text="{Binding Delivery.EndTime}" Margin="5,2"/>
+                                    <TextBlock Text="{Binding Delivery.Contactnumber}" Margin="5,2"/>
+                                    <TextBlock Text="{Binding Delivery.PaymentType}" Margin="5,2"/>
+                                    <TextBlock Text="{Binding Delivery.Notes}" Margin="5,2" TextWrapping="Wrap"/>
                                 </StackPanel>
                             </Expander>
                         </DataTemplate>
