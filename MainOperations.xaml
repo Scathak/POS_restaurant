@@ -148,11 +148,11 @@
                 <Button Content="Kahvaltı" Style="{StaticResource GroupButtonStyleCategories}"
                     Tag="/Images/kahvalti01.jpg"/>
                 <Button Content="Main Courses" Style="{StaticResource GroupButtonStyleCategories}"
-                        Tag=""/>
+                        Tag="/Images/main_courses_01.jpg"/>
                 <Button Content="Desserts" Style="{StaticResource GroupButtonStyleCategories}" 
-                        Tag="/Images/Desserts01.jpg"/>
+                        Tag="/Images/deserts_02.jpg"/>
                 <Button Content="Drinks" Style="{StaticResource GroupButtonStyleCategories}"
-                        Tag="/Images/Drinks02.jpg"/>
+                        Tag="/Images/bever01.jpg"/>
             </UniformGrid>
 
             <!-- More categories -->

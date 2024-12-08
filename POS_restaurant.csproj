@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <None Remove="DB connection.txt" />
+    <None Remove="Images\bever01.jpg" />
+    <None Remove="Images\deserts_02.jpg" />
     <None Remove="Images\Desserts01.jpg" />
     <None Remove="Images\Drinks02.jpg" />
     <None Remove="Images\iAccount_01.jpg" />
@@ -31,6 +33,7 @@
     <None Remove="Images\iTea_01.jpg" />
     <None Remove="Images\kahvalti01.jpg" />
     <None Remove="Images\Logo2.jpg" />
+    <None Remove="Images\main_courses_01.jpg" />
     <None Remove="Properties\password.ttf" />
   </ItemGroup>
 
@@ -46,6 +49,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\bever01.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\deserts_02.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\Desserts01.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -105,6 +114,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Logo2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\main_courses_01.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Properties\password.ttf">
