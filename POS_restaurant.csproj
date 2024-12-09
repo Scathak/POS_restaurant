@@ -11,6 +11,7 @@
   <ItemGroup>
     <None Remove="DB connection.txt" />
     <None Remove="Images\bever01.jpg" />
+    <None Remove="Images\breakfast02.jpg" />
     <None Remove="Images\deserts_02.jpg" />
     <None Remove="Images\Desserts01.jpg" />
     <None Remove="Images\Drinks02.jpg" />
@@ -50,6 +51,9 @@
 
   <ItemGroup>
     <Resource Include="Images\bever01.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\breakfast02.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\deserts_02.jpg">
