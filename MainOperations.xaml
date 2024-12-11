@@ -15,7 +15,7 @@
         </Style>
         <Style x:Key="GroupButtonStyleCategories" TargetType="Button">
             <Setter Property="Height" Value="160"/>
-            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Margin" Value="0"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="Padding" Value="10,5"/>
@@ -153,7 +153,7 @@
                 <Button Content="Desserts" Style="{StaticResource GroupButtonStyleCategories}" 
                         Tag="/Images/deserts_02.jpg"/>
                 <Button Content="Drinks" Style="{StaticResource GroupButtonStyleCategories}"
-                        Tag="/Images/bever01.jpg"/>
+                        Tag="/Images/bever03.jpg"/>
             </UniformGrid>
 
             <!-- More categories -->
