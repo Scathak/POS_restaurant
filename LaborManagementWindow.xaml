@@ -25,7 +25,8 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <local:UserControl1 x:Name="MainHeader" VerticalAlignment="Top" Grid.Row="0" Grid.ColumnSpan="2"/>
         <local:UserControl2 x:Name="MainMenu" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="3" Grid.RowSpan="5"/>
@@ -57,7 +58,7 @@
                   VerticalAlignment="Top"
                   />
         </DockPanel>
-        <StackPanel Grid.Row="5">
+        <StackPanel Grid.Row="4">
             <TextBlock Text="Employeers per One day" FontSize="16" />
             <UniformGrid Rows="1" Columns="3" HorizontalAlignment="Left">
                 
@@ -66,6 +67,10 @@
                 <Button Content="-" Style="{StaticResource ButtonStyle}" Click="KeyButton_Click" />
             </UniformGrid>
         </StackPanel>
-
+        <StackPanel Grid.Row="6" >
+            <TextBox x:Name="TargetTextBox" FontSize="30" Height="auto"/>
+            <!-- On-Screen Keyboard -->
+            <local:UserControl7 x:Name="OnScreenKeyboard" VerticalAlignment="Bottom" ButtonPressed="OnKeyboardButtonPressed"/>
+        </StackPanel>
     </Grid>
 </Window>

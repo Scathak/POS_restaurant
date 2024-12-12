@@ -15,7 +15,7 @@
         </Style>
         <Style x:Key="GroupButtonStyleCategories" TargetType="Button">
             <Setter Property="Height" Value="160"/>
-            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Margin" Value="5"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="Padding" Value="10,5"/>
@@ -32,7 +32,7 @@
                             <Grid>
                                 <!-- Background image for the button -->
                                 <Image Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}" 
-                                       Stretch="Fill" 
+                                       Stretch="UniformToFill"
                                        Opacity="0.9"/>
 
                                 <!-- ContentPresenter positioned at the top-left -->

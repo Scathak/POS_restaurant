@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="POS_restaurant.UserControl7"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS_restaurant"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <!-- Keyboard Layout -->
+        <StackPanel Orientation="Vertical" Background="LightGray" Margin="10">
+            <!-- Language Toggle -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,10">
+                <Button Content="EN" Click="SetEnglishLayout" Width="50" Height="40" Margin="5"/>
+                <Button Content="TR" Click="SetTurkishLayout" Width="50" Height="40" Margin="5"/>
+            </StackPanel>
+
+            <!-- Keyboard -->
+            <UniformGrid x:Name="KeyboardGrid" Rows="4" Columns="10" Margin="0,5">
+                <!-- The buttons will be dynamically added here based on layout -->
+            </UniformGrid>
+        </StackPanel>
+    </Grid>
+</UserControl>

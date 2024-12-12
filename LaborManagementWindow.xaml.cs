@@ -221,5 +221,27 @@ namespace POS_restaurant
             // Use ShowDialog to open it as a modal window
             dataEntryForm.ShowDialog();
         }
+        // Handle keyboard button press
+        private void OnKeyboardButtonPressed(object sender, string value)
+        {
+            if (value == "Space")
+            {
+                TargetTextBox.Text += " ";
+            }
+            else if (value == "Backspace")
+            {
+                if (TargetTextBox.Text.Length > 0)
+                    TargetTextBox.Text = TargetTextBox.Text[..^1]; // Remove last character
+            }
+            else if (value == "Enter")
+            {
+                MessageBox.Show($"Entered Text: {TargetTextBox.Text}");
+                TargetTextBox.Clear();
+            }
+            else
+            {
+                TargetTextBox.Text += value;
+            }
+        }
     }
 }
