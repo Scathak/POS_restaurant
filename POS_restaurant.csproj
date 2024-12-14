@@ -36,6 +36,10 @@
     <None Remove="Images\kahvalti01.jpg" />
     <None Remove="Images\Logo2.jpg" />
     <None Remove="Images\main_courses_01.jpg" />
+    <None Remove="Images\OrderIsNotPaid_03.png" />
+    <None Remove="Images\OrderIsNotPaid_03.png" />
+    <None Remove="Images\OrderIsOnDelivery_04.png" />
+    <None Remove="Images\OrderIsPaid_03.png" />
     <None Remove="Properties\password.ttf" />
   </ItemGroup>
 
@@ -125,6 +129,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\main_courses_01.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\OrderIsNotPaid_03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\OrderIsOnDelivery_04.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\OrderIsPaid_03.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Properties\password.ttf">

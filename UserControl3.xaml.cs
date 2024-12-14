@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace POS_restaurant
 {
@@ -40,50 +28,50 @@ namespace POS_restaurant
             // Sample data for testing
             MenuWidgets = new List<MenuWidget>
             {
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 2", Line2Text = "Description 2", Line3Text = "More info", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 2", Line2Text = "Description 2", Line3Text = "More info", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 2", Line2Text = "Description 2", Line3Text = "More info", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "unpaid", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 2", Line2Text = "Description 2", Line3Text = "More info", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 2", Line2Text = "Description 2", Line3Text = "More info", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "unpaid", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 2", Line2Text = "Description 2", Line3Text = "More info", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1Description 1Description 1", Line3Text = "paid", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 2", Line2Text = "Description 2Description 1Description 1Description 1", Line3Text = "pending", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "unpaid", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 2", Line2Text = "Description 2", Line3Text = "More info", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 2", Line2Text = "Description 2", Line3Text = "More info", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 2", Line2Text = "Description 2", Line3Text = "More info", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 2", Line2Text = "Description 2", Line3Text = "More info", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
-                new MenuWidget { IconPath = "pack://application:,,,/Images/icon_32_32.ico", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsNotPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsNotPaid_03.png", Line1Text = "Item 2", Line2Text = "Description 2", Line3Text = "More info", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsNotPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsNotPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsNotPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsNotPaid_03.png", Line1Text = "Item 2", Line2Text = "Description 2", Line3Text = "More info", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsOnDelivery_04.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsOnDelivery_04.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 2", Line2Text = "Description 2", Line3Text = "More info", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "unpaid", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 2", Line2Text = "Description 2", Line3Text = "More info", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 2", Line2Text = "Description 2", Line3Text = "More info", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsNotPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsNotPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsNotPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "unpaid", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsNotPaid_03.png", Line1Text = "Item 2", Line2Text = "Description 2", Line3Text = "More info", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsNotPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1Description 1Description 1", Line3Text = "paid", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 2", Line2Text = "Description 2Description 1Description 1Description 1", Line3Text = "pending", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "unpaid", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 2", Line2Text = "Description 2", Line3Text = "More info", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 2", Line2Text = "Description 2", Line3Text = "More info", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 2", Line2Text = "Description 2", Line3Text = "More info", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsPaid_03.png", Line1Text = "Item 2", Line2Text = "Description 2", Line3Text = "More info", Line1Color = "#0000FF", Line2Color = "#FF00FF", Line3Color = "#FFFF00" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsOnDelivery_04.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
+                new MenuWidget { IconPath = "pack://application:,,,/Images/OrderIsOnDelivery_04.png", Line1Text = "Item 1", Line2Text = "Description 1", Line3Text = "More info", Line1Color = "#FF0000", Line2Color = "#00FF00", Line3Color = "#0000FF" },
 
                 // Add more items as needed
             };
