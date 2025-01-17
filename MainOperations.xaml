@@ -9,6 +9,7 @@
         Title="MainOperations" WindowState="Maximized" WindowStyle="None">
     <Window.Resources>
         <local:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+        <local:HalfWidthConverter x:Key="HalfWidthConverter"/>
         <Style x:Key="GroupButtonStyle" TargetType="Button">
             <Setter Property="FontSize" Value="40"/>
             <Setter Property="Height" Value="80"/>
@@ -58,6 +59,7 @@
         <Style x:Key="GroupButtonStyleActions" TargetType="Button">
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Height" Value="80"/>
+            <Setter Property="Width" Value="{Binding ElementName=UserControlInstance, Path=ActualWidth, Converter={StaticResource HalfWidthConverter}}" />
         </Style>
         <Style x:Key="ProductsButtonStyle" TargetType="Button">
             <Setter Property="FontSize" Value="16"/>
@@ -136,7 +138,7 @@
             <UniformGrid>
                 <Button Content="Add" Style="{StaticResource GroupButtonStyleActions}"/>
                 <Button Content="Delete" Style="{StaticResource GroupButtonStyleActions}"/>
-                <Button Content="Open Shift" Style="{StaticResource GroupButtonStyleActions}"/>
+                <Button Content="Open Shift" Background="Azure"  Style="{StaticResource GroupButtonStyleActions}"/>
                 
             </UniformGrid>
             <!-- More action buttons -->

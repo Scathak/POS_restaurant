@@ -80,6 +80,22 @@ namespace POS_restaurant
             throw new NotImplementedException();
         }
     }
+    public class HalfWidthConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is int width)
+            {
+                return width / 2; // Return half of the width
+            }
+            return 0; // Default value if conversion fails
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException(); // One-way binding only
+        }
+    }
     public partial class MainOperationsWindow : Window
     {
         public ObservableCollection<MainOperationsRecord> Collection { get; set; }
