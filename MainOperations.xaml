@@ -9,7 +9,6 @@
         Title="MainOperations" WindowState="Maximized" WindowStyle="None">
     <Window.Resources>
         <local:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
-        <local:HalfWidthConverter x:Key="HalfWidthConverter"/>
         <Style x:Key="GroupButtonStyle" TargetType="Button">
             <Setter Property="FontSize" Value="40"/>
             <Setter Property="Height" Value="80"/>
@@ -59,7 +58,6 @@
         <Style x:Key="GroupButtonStyleActions" TargetType="Button">
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Height" Value="80"/>
-            <Setter Property="Width" Value="{Binding ElementName=UserControlInstance, Path=ActualWidth, Converter={StaticResource HalfWidthConverter}}" />
         </Style>
         <Style x:Key="ProductsButtonStyle" TargetType="Button">
             <Setter Property="FontSize" Value="16"/>
@@ -72,7 +70,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="auto"/>
@@ -135,11 +133,49 @@
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <local:UserControl4 x:Name="NumericButtons" VerticalAlignment="Top" Transparency="1.0"/>
             </StackPanel>
-            <UniformGrid>
-                <Button Content="Add" Style="{StaticResource GroupButtonStyleActions}"/>
-                <Button Content="Delete" Style="{StaticResource GroupButtonStyleActions}"/>
+            <UniformGrid Columns="2">
+                <Button Content="Add Item" Background="LightGray" Style="{StaticResource GroupButtonStyleActions}"/>
+                <Button Content="Delete Item" Background="LightGoldenrodYellow" Style="{StaticResource GroupButtonStyleActions}"/>
+                <Button Background="LightSeaGreen"  Style="{StaticResource GroupButtonStyleActions}">
+                    <StackPanel>
+                        <TextBlock Text="Close" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Receipt" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>                
+                <Button Background="LightSalmon"  Style="{StaticResource GroupButtonStyleActions}">
+                    <StackPanel>
+                        <TextBlock Text="Reprint" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Receipt" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button  Background="LightSteelBlue"  Style="{StaticResource GroupButtonStyleActions}">
+                    <StackPanel>
+                        <TextBlock Text="Void" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Transaction" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Background="LimeGreen"  Style="{StaticResource GroupButtonStyleActions}">
+                    <StackPanel>
+                        <TextBlock Text="Open" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Cash Drawer" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Background="AntiqueWhite"  Style="{StaticResource GroupButtonStyleActions}">
+                    <StackPanel>
+                        <TextBlock Text="Customer" HorizontalAlignment="Center"/>
+                        <TextBlock Text="lookup" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Background="Chocolate"  Style="{StaticResource GroupButtonStyleActions}">
+                    <StackPanel>
+                        <TextBlock Text="Discounts" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Promotions" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Content="X report" Background="LightGreen"  Style="{StaticResource GroupButtonStyleActions}"/>
+                <Button Content="Z report" Background="LightPink"  Style="{StaticResource GroupButtonStyleActions}" IsEnabled="False"/>
                 <Button Content="Open Shift" Background="Azure"  Style="{StaticResource GroupButtonStyleActions}"/>
-                
+                <Button Content="Close Shift" Background="Turquoise"  Style="{StaticResource GroupButtonStyleActions}"/>
             </UniformGrid>
             <!-- More action buttons -->
         </StackPanel>

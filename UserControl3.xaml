@@ -6,14 +6,12 @@
              xmlns:local="clr-namespace:POS_restaurant"
              mc:Ignorable="d" 
              Height="80" HorizontalAlignment="Stretch" VerticalAlignment="Top">
-
     <Grid>
         <StackPanel Height="auto" Orientation="Horizontal" HorizontalAlignment="Center">
         <!-- Left scroll button -->
         <Button Content="&lt;" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Click="ScrollLeft_Click"/>
             <!-- Bottom horizontal menu with scrolling -->
             <Grid VerticalAlignment="Bottom" Height ="auto" Background="LightGray" Width="auto">
-
             <!-- Scrollable menu -->
             <ScrollViewer x:Name="MenuScrollViewer" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Width ="1500" Margin="0,0,30,0">
                 <ItemsControl x:Name="MenuItemsControl" ItemsSource="{Binding MenuWidgets}">
@@ -28,7 +26,6 @@
                                     <StackPanel Height="80"  Width="auto" Margin="1" Orientation="Vertical" HorizontalAlignment="Left">
                                         <!-- Icon Image -->
                                         <Image Source="{Binding IconPath}" Width="32" Height="32" Margin="0"/>
-
                                         <!-- Text lines with different colors -->
                                         <TextBlock Text="{Binding Line1Text}" Foreground="{Binding Line1Color}" FontSize="10" HorizontalAlignment="Center"/>
                                         <TextBlock Text="{Binding Line2Text}" Foreground="{Binding Line2Color}" FontSize="10" HorizontalAlignment="Center"/>
@@ -39,12 +36,9 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </ScrollViewer>
-
-        
         </Grid>
             <!-- Right scroll button -->
         <Button Content="&gt;" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" Click="ScrollRight_Click"/>
         </StackPanel>
     </Grid>
-
 </UserControl>

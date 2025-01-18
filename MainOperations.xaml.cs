@@ -80,22 +80,6 @@ namespace POS_restaurant
             throw new NotImplementedException();
         }
     }
-    public class HalfWidthConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            if (value is int width)
-            {
-                return width / 2; // Return half of the width
-            }
-            return 0; // Default value if conversion fails
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException(); // One-way binding only
-        }
-    }
     public partial class MainOperationsWindow : Window
     {
         public ObservableCollection<MainOperationsRecord> Collection { get; set; }
@@ -104,21 +88,20 @@ namespace POS_restaurant
         {
             InitializeComponent();
             MainHeader.SetWindowName("1. Main Operations");
-
-            //NumericTextBox.Focus(); // Set initial focus to the NumericTextBox
-
-            Collection = new ObservableCollection<MainOperationsRecord>();
-            Collection.Add(new MainOperationsRecord() { OperationNumber = 1, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "14:20", Delivery = new DeliverySpecification { Address = "123 Ocean Drive", Weight = 5, StartTime = "18:30", EndTime = "19:00", Contactnumber = "555-1234", PaymentType = PaymentTypes.BankCard, Notes = "Please take POS terminal." } });
-            Collection.Add(new MainOperationsRecord() { OperationNumber = 2, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "15:10", Delivery = new DeliverySpecification { Address = "123 Ocean Drive", Weight = 5, StartTime = "18:30", EndTime = "19:00", Contactnumber = "555-1234", PaymentType = PaymentTypes.Cash, Notes = "Please take exchange." } });
-            Collection.Add(new MainOperationsRecord() { OperationNumber = 3, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "15:50", Delivery = new DeliverySpecification { Address = "123 Ocean Drive", Weight = 5, StartTime = "18:30", EndTime = "19:00", Contactnumber = "555-1234", PaymentType = PaymentTypes.DeferredPayment, Notes = "Pay tomorrow." } });
-            Collection.Add(new MainOperationsRecord() { OperationNumber = 4, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "16:30", Delivery = new DeliverySpecification { Address = "123 Ocean Drive", Weight = 5, StartTime = "18:30", EndTime = "19:00", Contactnumber = "555-1234", PaymentType = PaymentTypes.MoneyTransfer, Notes = "Please include extra napkins." } });
-            Collection.Add(new MainOperationsRecord() { OperationNumber = 5, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "16:30", Delivery = null });
-            Collection.Add(new MainOperationsRecord() { OperationNumber = 6, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "16:45", Delivery = null });
-            Collection.Add(new MainOperationsRecord() { OperationNumber = 7, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "17:24", Delivery = null });
-            Collection.Add(new MainOperationsRecord() { OperationNumber = 8, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "17:51", Delivery = null });
-            Collection.Add(new MainOperationsRecord() { OperationNumber = 9, Name = "Coffee", Price = 50, Quantity = 1, Total = 50, Table = 3, Date = "11/6/2024", Time = "19:05", Delivery = null });
-            Collection.Add(new MainOperationsRecord() { OperationNumber = 9, Name = "Coffee", Price = 50, Quantity = 1, Total = 50, Table = 3, Date = "11/6/2024", Time = "19:05", Delivery = null }); 
-            Collection.Add(new MainOperationsRecord() { OperationNumber = 10, Name = "Coffee", Price = 50, Quantity = 1, Total = 50, Table = 5, Date = "11/6/2024", Time = "19:28", Delivery = null });
+            Collection =
+            [
+                new MainOperationsRecord() { OperationNumber = 1, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "14:20", Delivery = new DeliverySpecification { Address = "123 Ocean Drive", Weight = 5, StartTime = "18:30", EndTime = "19:00", Contactnumber = "555-1234", PaymentType = PaymentTypes.BankCard, Notes = "Please take POS terminal." } },
+                new MainOperationsRecord() { OperationNumber = 2, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "15:10", Delivery = new DeliverySpecification { Address = "123 Ocean Drive", Weight = 5, StartTime = "18:30", EndTime = "19:00", Contactnumber = "555-1234", PaymentType = PaymentTypes.Cash, Notes = "Please take exchange." } },
+                new MainOperationsRecord() { OperationNumber = 3, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "15:50", Delivery = new DeliverySpecification { Address = "123 Ocean Drive", Weight = 5, StartTime = "18:30", EndTime = "19:00", Contactnumber = "555-1234", PaymentType = PaymentTypes.DeferredPayment, Notes = "Pay tomorrow." } },
+                new MainOperationsRecord() { OperationNumber = 4, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "16:30", Delivery = new DeliverySpecification { Address = "123 Ocean Drive", Weight = 5, StartTime = "18:30", EndTime = "19:00", Contactnumber = "555-1234", PaymentType = PaymentTypes.MoneyTransfer, Notes = "Please include extra napkins." } },
+                new MainOperationsRecord() { OperationNumber = 5, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "16:30", Delivery = null },
+                new MainOperationsRecord() { OperationNumber = 6, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "16:45", Delivery = null },
+                new MainOperationsRecord() { OperationNumber = 7, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "17:24", Delivery = null },
+                new MainOperationsRecord() { OperationNumber = 8, Name = "Tea", Price = 30, Quantity = 1, Total = 30, Table = 1, Date = "11/6/2024", Time = "17:51", Delivery = null },
+                new MainOperationsRecord() { OperationNumber = 9, Name = "Coffee", Price = 50, Quantity = 1, Total = 50, Table = 3, Date = "11/6/2024", Time = "19:05", Delivery = null },
+                new MainOperationsRecord() { OperationNumber = 9, Name = "Coffee", Price = 50, Quantity = 1, Total = 50, Table = 3, Date = "11/6/2024", Time = "19:05", Delivery = null },
+                new MainOperationsRecord() { OperationNumber = 10, Name = "Coffee", Price = 50, Quantity = 1, Total = 50, Table = 5, Date = "11/6/2024", Time = "19:28", Delivery = null },
+            ];
             MainOperationDataGrid.ItemsSource = Collection;
 
             // Event listerner for a numeric pad
