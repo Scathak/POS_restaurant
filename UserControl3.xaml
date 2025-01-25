@@ -11,9 +11,9 @@
         <!-- Left scroll button -->
         <Button Content="&lt;" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Click="ScrollLeft_Click"/>
             <!-- Bottom horizontal menu with scrolling -->
-            <Grid VerticalAlignment="Bottom" Height ="auto" Background="LightGray" Width="auto">
+            <Grid VerticalAlignment="Bottom" Height ="auto" Background="LightGray">
             <!-- Scrollable menu -->
-            <ScrollViewer x:Name="MenuScrollViewer" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Width ="1500" Margin="0,0,30,0">
+            <ScrollViewer x:Name="MenuScrollViewer" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Margin="0,0,30,0">
                 <ItemsControl x:Name="MenuItemsControl" ItemsSource="{Binding MenuWidgets}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>

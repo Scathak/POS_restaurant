@@ -85,8 +85,9 @@
 
         <local:UserControl1 x:Name="MainHeader" VerticalAlignment="Top"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"/>
         <local:UserControl2 x:Name="MainMenu" HorizontalAlignment="Right" Grid.Row="1" Grid.RowSpan="4" Grid.Column="5"/>
-        <local:UserControl3 x:Name="EventsConveyer" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5"/>
-
+        <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" >
+            <local:UserControl3 x:Name="EventsConveyer" HorizontalAlignment="Stretch"/>
+        </StackPanel>
         <!-- Left: DataGrid and scheme -->
 
         <!-- Left: DataGrid with Operations -->
