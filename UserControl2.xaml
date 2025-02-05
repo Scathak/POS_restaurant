@@ -12,67 +12,67 @@
             <Button Width="50" Height="50" Click="MainButton_Click">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Image Source= "pack://application:,,,/Images/iMain02.jpg" Width="32" Height="32" Stretch="Uniform"/>
-                    <TextBlock Text="1" FontSize="9" TextWrapping="Wrap" TextAlignment="Center"/>
+                    <TextBlock Text="1" FontSize="12" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center"/>
                 </StackPanel>
             </Button>
             <Button Width="50" Height="50" Click="FoodInventoryButton_Click">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Image Source="pack://application:,,,/Images/iFoodinv_01.jpg" Width="32" Height="32" Stretch="Uniform"/>
-                    <TextBlock Text="2" FontSize="9" TextWrapping="Wrap" TextAlignment="Center"/>
+                    <TextBlock Text="2" FontSize="12" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center"/>
                 </StackPanel>
             </Button>
             <Button Width="50" Height="50" Click="ComplimentaryInventoryButton_Click">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Image Source="pack://application:,,,/Images/iExtraInv_01.jpg" Width="32" Height="32" Stretch="Uniform"/>
-                    <TextBlock Text="3" FontSize="9" TextWrapping="Wrap" TextAlignment="Center"/>
+                    <TextBlock Text="3" FontSize="12" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center"/>
                 </StackPanel>
             </Button>
             <Button Width="50" Height="50" Click="AccountTrackingButton_Click">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Image Source="pack://application:,,,/Images/iAccount_01.jpg" Width="32" Height="32" Stretch="Uniform"/>
-                    <TextBlock Text="4" FontSize="9" TextWrapping="Wrap" TextAlignment="Center"/>
+                    <TextBlock Text="4" FontSize="12" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center"/>
                 </StackPanel>
             </Button>
             <Button Width="50" Height="50" Click="GiftLoyaltyButton_Click">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Image Source="pack://application:,,,/Images/iGifts_01.jpg" Width="32" Height="32" Stretch="Uniform"/>
-                    <TextBlock Text="5" FontSize="9" TextWrapping="Wrap" TextAlignment="Center"/>
+                    <TextBlock Text="5" FontSize="12" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center"/>
                 </StackPanel>
             </Button>
             <Button Width="50" Height="50" Click="PaymentsButton_Click">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Image Source="pack://application:,,,/Images/iPayments_01.jpg" Width="32" Height="32" Stretch="Uniform"/>
-                    <TextBlock Text="6" FontSize="9" TextWrapping="Wrap" TextAlignment="Center"/>
+                    <TextBlock Text="6" FontSize="12" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center"/>
                 </StackPanel>
             </Button>
             <Button Width="50" Height="50" Click="MenuManagementButton_Click">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Image Source="pack://application:,,,/Images/imenu_01.jpg" Width="32" Height="32" Stretch="Uniform"/>
-                    <TextBlock Text="7" FontSize="9" TextWrapping="Wrap" TextAlignment="Center"/>
+                    <TextBlock Text="7" FontSize="12" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center"/>
                 </StackPanel>
             </Button>
             <Button Width="50" Height="50" Click="labourManagementButton_Click">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Image Source="pack://application:,,,/Images/ilabour_01.jpg" Width="32" Height="32" Stretch="Uniform"/>
-                    <TextBlock Text="8" FontSize="9" TextWrapping="Wrap" TextAlignment="Center"/>
+                    <TextBlock Text="8" FontSize="12" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center"/>
                 </StackPanel>
             </Button>
             <Button Width="50" Height="50" Click="SetupWindowButton_Click">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Image Source="pack://application:,,,/Images/iSetup_01.jpg" Width="32" Height="32" Stretch="Uniform"/>
-                    <TextBlock Text="9" FontSize="9" TextWrapping="Wrap" TextAlignment="Center"/>
+                    <TextBlock Text="9" FontSize="12" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center"/>
                 </StackPanel>
             </Button>
             <Button Width="50" Height="50" Click="ReportingAnalytics_Click">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Image Source="pack://application:,,,/Images/iReport_01.jpg" Width="32" Height="32" Stretch="Uniform"/>
-                    <TextBlock Text="10" FontSize="9" TextWrapping="Wrap" TextAlignment="Center"/>
+                    <TextBlock Text="10" FontSize="12" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center"/>
                 </StackPanel>
             </Button>
             <Button Width="50" Height="50" Click="Logout_Click">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Image Source="pack://application:,,,/Images/iLogout_01.jpg" Width="32" Height="32" Stretch="Uniform"/>
-                    <TextBlock Text="11" FontSize="9" TextWrapping="Wrap" TextAlignment="Center"/>
+                    <TextBlock Text="11" FontSize="12" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center"/>
                 </StackPanel>
             </Button>
         </StackPanel>

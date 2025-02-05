@@ -10,6 +10,6 @@
         <!-- Active Window Name -->
         <TextBlock x:Name="WindowNameTextBlock" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" Margin="10" />
         <!-- Date and Time -->
-        <TextBlock x:Name="DateTimeTextBlock" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" />
+        <TextBlock x:Name="DateTimeTextBlock" FontSize="16" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" />
     </Grid>
 </UserControl>
